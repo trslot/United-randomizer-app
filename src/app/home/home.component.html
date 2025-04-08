@@ -1,0 +1,26 @@
+<button mat-button routerLink="/account">Go to Account Page</button>
+<div class="home-container">
+  <div class="player-select">
+    <label for="playerCount">Number of Players:</label>
+    <select id="playerCount" [(ngModel)]="playerCount">
+      <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
+    </select>
+  </div>
+
+  <button mat-button (click)="randomize()">Randomize</button>
+
+  <div class="results" *ngIf="selectedHeroes.length || selectedVillain || selectedLocations.length">
+    <h2>Selected Heroes</h2>
+    <ul>
+      <li *ngFor="let hero of selectedHeroes">{{ hero }}</li>
+    </ul>
+
+    <h2>Selected Villain</h2>
+    <p>{{ selectedVillain }}</p>
+
+    <h2>Selected Locations</h2>
+    <ul>
+      <li *ngFor="let location of selectedLocations">{{ location }}</li>
+    </ul>
+  </div>
+</div>

@@ -1,0 +1,885 @@
+<mat-accordion>
+    <!-- Marvel United: X-Men -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Marvel United: X-Men</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(marvelUnitedXMenHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(marvelUnitedXMenHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of marvelUnitedXMenHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelAntiHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Anti-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(marvelUnitedXMenAntiHeroes, selectedAntiHeroes)"
+                              (change)="toggleSelectAll(marvelUnitedXMenAntiHeroes, selectedAntiHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (antiHero of marvelUnitedXMenAntiHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                              (change)="toggleSelection(antiHero, selectedAntiHeroes)">
+                    {{ antiHero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(marvelUnitedXMenVillains, selectedVillains)"
+                              (change)="toggleSelectAll(marvelUnitedXMenVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of marvelUnitedXMenVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(marvelUnitedXMenLocations, selectedLocations)"
+                              (change)="toggleSelectAll(marvelUnitedXMenLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of marvelUnitedXMenLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Blue Team -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Blue Team</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(blueTeamHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(blueTeamHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of blueTeamHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(blueTeamVillains, selectedVillains)"
+                              (change)="toggleSelectAll(blueTeamVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of blueTeamVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(blueTeamLocations, selectedLocations)"
+                              (change)="toggleSelectAll(blueTeamLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of blueTeamLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Days of Future Past -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Days of Future Past</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(daysOfFuturePastHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(daysOfFuturePastHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of daysOfFuturePastHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(daysOfFuturePastVillains, selectedVillains)"
+                              (change)="toggleSelectAll(daysOfFuturePastVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of daysOfFuturePastVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Deadpool -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Deadpool</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(deadpoolHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(deadpoolHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of deadpoolHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelAntiHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Anti-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(deadpoolAntiHeroes, selectedAntiHeroes)"
+                              (change)="toggleSelectAll(deadpoolAntiHeroes, selectedAntiHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (antiHero of deadpoolAntiHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                              (change)="toggleSelection(antiHero, selectedAntiHeroes)">
+                    {{ antiHero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(deadpoolVillains, selectedVillains)"
+                              (change)="toggleSelectAll(deadpoolVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of deadpoolVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(deadpoolLocations, selectedLocations)"
+                              (change)="toggleSelectAll(deadpoolLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of deadpoolLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Fantastic Four -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Fantastic Four</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(fantasticFourHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(fantasticFourHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of fantasticFourHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelAntiHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Anti-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(fantasticFourAntiHeroes, selectedAntiHeroes)"
+                              (change)="toggleSelectAll(fantasticFourAntiHeroes, selectedAntiHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (antiHero of fantasticFourAntiHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                              (change)="toggleSelection(antiHero, selectedAntiHeroes)">
+                    {{ antiHero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(fantasticFourVillains, selectedVillains)"
+                              (change)="toggleSelectAll(fantasticFourVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of fantasticFourVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(fantasticFourLocations, selectedLocations)"
+                              (change)="toggleSelectAll(fantasticFourLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of fantasticFourLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- First Class -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">First Class</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(firstClassHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(firstClassHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of firstClassHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(firstClassVillains, selectedVillains)"
+                              (change)="toggleSelectAll(firstClassVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of firstClassVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(firstClassLocations, selectedLocations)"
+                              (change)="toggleSelectAll(firstClassLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of firstClassLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Gold Team -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Gold Team</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(goldTeamHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(goldTeamHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of goldTeamHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(goldTeamVillains, selectedVillains)"
+                              (change)="toggleSelectAll(goldTeamVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of goldTeamVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(goldTeamLocations, selectedLocations)"
+                              (change)="toggleSelectAll(goldTeamLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of goldTeamLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Phoenix Five -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Phoenix Five</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(phoenixFiveHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(phoenixFiveHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of phoenixFiveHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(phoenixFiveVillains, selectedVillains)"
+                              (change)="toggleSelectAll(phoenixFiveVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of phoenixFiveVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- The Horsemen of Apocalypse -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">The Horsemen of Apocalypse</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelAntiHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Anti-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(theHorsemenOfApocalypseAntiHeroes, selectedAntiHeroes)"
+                              (change)="toggleSelectAll(theHorsemenOfApocalypseAntiHeroes, selectedAntiHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (antiHero of theHorsemenOfApocalypseAntiHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                              (change)="toggleSelection(antiHero, selectedAntiHeroes)">
+                    {{ antiHero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(theHorsemenOfApocalypseVillains, selectedVillains)"
+                              (change)="toggleSelectAll(theHorsemenOfApocalypseVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of theHorsemenOfApocalypseVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(theHorsemenOfApocalypseLocations, selectedLocations)"
+                              (change)="toggleSelectAll(theHorsemenOfApocalypseLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of theHorsemenOfApocalypseLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- X-Force -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">X-Force</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(xForceHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(xForceHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of xForceHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(xForceVillains, selectedVillains)"
+                              (change)="toggleSelectAll(xForceVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of xForceVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(xForceLocations, selectedLocations)"
+                              (change)="toggleSelectAll(xForceLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of xForceLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Mutant Pledge Bonuses and Stretch Goals -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Mutant Pledge Bonuses and Stretch Goals</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <!-- Mutant Pledge Bonus -->
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Pledge Bonus Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(mutantPledgeBonusHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(mutantPledgeBonusHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of mutantPledgeBonusHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <!-- Mutant Promos -->
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Mutant Stretch Goals Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(mutantPromosHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(mutantPromosHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of mutantPromosHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelAntiHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Mutant Stretch Goals Anti-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(mutantPromosAntiHeroes, selectedAntiHeroes)"
+                              (change)="toggleSelectAll(mutantPromosAntiHeroes, selectedAntiHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (antiHero of mutantPromosAntiHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                              (change)="toggleSelection(antiHero, selectedAntiHeroes)">
+                    {{ antiHero }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Mutant Stretch Goals Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(mutantPromosVillains, selectedVillains)"
+                              (change)="toggleSelectAll(mutantPromosVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of mutantPromosVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+</mat-accordion>

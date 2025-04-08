@@ -1,0 +1,344 @@
+<mat-accordion>
+    <!-- DC Super Heroes United -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">DC Super Heroes United </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of dcSuperHeroesHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of dcSuperHeroesVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <!-- <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (location of dcSuperHeroesLocations; track $index) {
+            <mat-list-item>{{location}}</mat-list-item>
+            }
+        </mat-expansion-panel> -->
+    </mat-expansion-panel>
+
+    <!-- Arkham Asylum Breakout -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Arkham Asylum Breakout </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of arkhamAsylumBreakoutHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of arkhamAsylumBreakoutVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <!-- <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (location of arkhamAsylumBreakoutLocations; track $index) {
+            <mat-list-item>{{location}}</mat-list-item>
+            }
+        </mat-expansion-panel> -->
+    </mat-expansion-panel>
+
+    <!-- Gotham City -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Gotham City </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of gothamCityHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Dual-Modes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of gothamCityDualModes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of gothamCityVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <!-- <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (location of gothamCityLocations; track $index) {
+            <mat-list-item>{{location}}</mat-list-item>
+            }
+        </mat-expansion-panel> -->
+        <mat-expansion-panel class="panelSupports">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Supports </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (support of gothamCitySupports; track $index) {
+            <mat-list-item>{{support}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Green Lantern Corps -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Green Lantern Corps </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of greenLaternCorpsHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Justice Society of America -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Justice Society of America </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of jsaHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Dual-Modes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (dualMode of jsaDualModes; track $index) {
+            <mat-list-item>{{dualMode}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Metropolis -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Metropolis </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of metropolisHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of metropolisVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Locations </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (location of metropolisLocations; track $index) {
+            <mat-list-item>{{location}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelSupports">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Supports </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (support of metropolisSupports; track $index) {
+            <mat-list-item>{{support}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Sidekicks -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Sidekicks </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelPets">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Sidekicks </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (sidekick of sidekicks; track $index) {
+            <mat-list-item>{{sidekick}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Suicide Squad -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Suicide Squad </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Dual-Modes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (dualMode of suicideSquadDualModes; track $index) {
+            <mat-list-item>{{dualMode}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- Teen Titans -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">Teen Titans </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of teenTitansHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villains of teenTitansVillains; track $index) {
+            <mat-list-item>{{villains}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- War of Light -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">War of Light </mat-panel-title>
+        </mat-expansion-panel-header>
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of warOfLightHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Dual Modes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (dualMode of warOfLightDualModes; track $index) {
+            <mat-list-item>{{dualMode}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villains of warOfLightVillains; track $index) {
+            <mat-list-item>{{villains}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+
+    <!-- DC Super Heroes United Pledge Bonuses and Stretch Goals -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">DC Super Heroes United Pledge Bonuses and Stretch Goals</mat-panel-title>
+        </mat-expansion-panel-header>
+        <!-- DC Super Heroes United Pledge Bonus -->
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Pledge Bonus Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of pledgeBonusHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Pledge Bonus Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of pledgeBonusVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelSupports">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Pledge Bonus Supports </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (support of pledgeBonusSupports; track $index) {
+            <mat-list-item>{{support}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+
+        <!-- DC Super Heroes United Stretch Goals -->
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Stretch Goals Heroes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (hero of stretchGoalsHeroes; track $index) {
+            <mat-list-item>{{hero}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Stretch Goals Dual Modes </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (dualMode of stretchGoalsDualModes; track $index) {
+            <mat-list-item>{{dualMode}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Stretch Goals Villains </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (villain of stretchGoalsVillains; track $index) {
+            <mat-list-item>{{villain}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title class="title">Stretch Goals Locations </mat-panel-title>
+            </mat-expansion-panel-header>
+            @for (location of stretchGoalsLocations; track $index) {
+            <mat-list-item>{{location}}</mat-list-item>
+            }
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+</mat-accordion>
+
+<!-- <mat-expansion-panel>
+    <mat-expansion-panel-header>
+        <mat-panel-title class="title"></mat-panel-title>
+    </mat-expansion-panel-header>
+
+</mat-expansion-panel> -->
