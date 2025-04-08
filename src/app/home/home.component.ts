@@ -4,6 +4,10 @@ import { RouterModule } from '@angular/router';
 import { CommonModule } from '@angular/common';
 import { environment } from '../Environments/Environment';
 import { MatButtonModule } from '@angular/material/button';
+import { MatCardModule } from '@angular/material/card';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 import { initializeApp } from "firebase/app";
 import { getDatabase, ref, get, onValue } from "firebase/database";
@@ -14,7 +18,7 @@ import { getFirestore, collection, addDoc } from 'firebase/firestore';
 @Component({
   selector: 'app-home',
   standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule],
+  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -48,8 +52,6 @@ export class HomeComponent implements OnInit {
 
     onAuthStateChanged(auth, (user) => {
       if (user) {
-        // User is signed in, see docs for a list of available properties
-        // https://firebase.google.com/docs/reference/js/auth.user
         const uid = user.uid;
         const db = getFirestore();
         const userSelectionsRef = collection(db, 'userSelections');
@@ -73,7 +75,6 @@ export class HomeComponent implements OnInit {
         }).catch((error) => {
           console.error('Error fetching user selections:', error);
         });
-        // ...
       } else {
         console.log("No data available");
       }

@@ -1,0 +1,17 @@
+<div class="account-header">
+  <h4>Games Page</h4>
+</div>
+<div>
+  <mat-tab-group>
+    <mat-tab label="Marvel United"><app-season1></app-season1></mat-tab>
+    <mat-tab label="Marvel United: X-Men"><app-season2></app-season2></mat-tab>
+    <mat-tab label="Marvel United: Multiverse"><app-season3></app-season3></mat-tab>
+    <mat-tab label="DC Super Heroes United"><app-season1-dc></app-season1-dc></mat-tab>
+  </mat-tab-group>
+</div>
+
+<div class="save-button-container">
+  <button mat-raised-button (click)="saveSelections()">
+    Save Selections
+  </button>
+</div>

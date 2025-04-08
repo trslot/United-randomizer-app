@@ -1,30 +1,34 @@
-<h4>Login</h4>
-<p>Please sign in to continue.</p>
+<mat-card>
+  <mat-card-content class="center-content">
+    <p>Log in with</p>
+    <mat-card-actions>
+        <!-- <mat-icon svgIcon="google"></mat-icon> -->
+        <mat-icon svgIcon="google" (click)="loginWithGoogle()"></mat-icon>
+    </mat-card-actions>
 
-<!-- Email/Password Login Form -->
-<form (ngSubmit)="loginWithEmailPassword()">
-  <div style="display: flex; flex-direction: column; gap: 16px; width: 250px;">
-    <mat-form-field appearance="fill" style="width: 100%;">
-      <mat-label>Email</mat-label>
-      <input matInput type="email" id="email" [(ngModel)]="email" name="email" required>
-    </mat-form-field>
+    <p>or use your email and password</p>
+    <form (ngSubmit)="loginWithEmailPassword()">
+      <div style="display: flex; flex-direction: column; gap: 16px; width: 250px;">
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Email</mat-label>
+          <input matInput type="email" id="email" [(ngModel)]="email" name="email" required>
+        </mat-form-field>
 
-    <mat-form-field appearance="fill" style="width: 100%;">
-      <mat-label>Password</mat-label>
-      <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
-    </mat-form-field>
-  </div>
-  <button mat-button type="submit">Login with Email</button>
-</form>
+        <mat-form-field appearance="fill" style="width: 100%;">
+          <mat-label>Password</mat-label>
+          <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
+        </mat-form-field>
+      </div>
+      <mat-card-actions>
+        <button mat-raised-button color="primary" type="submit">Login</button>
+      </mat-card-actions>
+    </form>
 
-<p>Or</p>
+    <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
+      {{ errorMessage }}
+    </div>
 
-<!-- Google Sign-In Button -->
-<button mat-button (click)="loginWithGoogle()">Sign in with Google</button>
-
-<div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
-  {{ errorMessage }}
-</div>
-
-<p>Don't have an account?</p>
-<button mat-button routerLink="/register">Register here</button>
+    <p>Don't have an account?</p>
+    <button mat-raised-button routerLink="/register">Register here</button>
+  </mat-card-content>
+</mat-card>

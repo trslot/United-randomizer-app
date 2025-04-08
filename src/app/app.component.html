@@ -1,13 +1,25 @@
-<mat-card class="example-card" appearance="outlined">
-    <mat-card-header>
-        <h1>United Randomizer</h1>
-    </mat-card-header>
-    <mat-card-content>
+<div class="united">
+    <div>
+        <h2>United</h2>
+        <div class="top-right-container">
+            <div class="top-menu" *ngIf="isLoggedIn">
+                <button mat-flat-button (click)="navigateTo('/home')">
+                    <span class="material-icons">home</span></button>
+                <button mat-flat-button (click)="navigateTo('/games')">
+                    <span class="material-icons">sports_esports</span>
+                </button>
+                <button mat-flat-button (click)="navigateTo('/account')">
+                    <span class="material-icons">person</span>
+                </button>
+                <button mat-flat-button (click)="logout()">
+                    <span class="material-icons">logout</span>
+                </button>
+            </div>
+            <div>
+            </div>
+            <!-- -->
+        </div>
         <router-outlet></router-outlet> <!-- Always render router outlet -->
-    </mat-card-content>
-</mat-card>
-
-<div *ngIf="isLoggedIn">
-    <button mat-button (click)="logout()">Logout</button> <!-- Added Logout Button -->
+    </div>
 </div>
 
