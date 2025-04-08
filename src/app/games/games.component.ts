@@ -10,11 +10,11 @@ import { addDoc, collection, getFirestore, query, where, getDocs, updateDoc } fr
 import { getAuth } from '@firebase/auth';
 
 @Component({
-  selector: 'app-games',
-  standalone: true,
-  imports: [RouterModule, Season1Component, Season2Component, Season3Component, Season1DcComponent, MatTabsModule, MatButtonModule],
-  templateUrl: './games.component.html',
-  styleUrls: ['./games.component.scss']
+    selector: 'app-games',
+    standalone: true,
+    imports: [MatTabsModule, MatButtonModule, Season1Component, Season2Component, Season3Component, Season1DcComponent],
+    templateUrl: './games.component.html',
+    styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
   @ViewChild(Season1Component) season1Component!: Season1Component;

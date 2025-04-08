@@ -16,11 +16,10 @@ import { getDocs, query, where, orderBy, limit } from 'firebase/firestore';
 import { getFirestore, collection, addDoc } from 'firebase/firestore';
 
 @Component({
-  selector: 'app-home',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule],
-  templateUrl: './home.component.html',
-  styleUrls: ['./home.component.scss']
+    selector: 'app-home',
+    imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule],
+    templateUrl: './home.component.html',
+    styleUrls: ['./home.component.scss']
 })
 export class HomeComponent implements OnInit {
   config = {

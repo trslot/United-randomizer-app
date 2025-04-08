@@ -3,20 +3,16 @@ import { signInWithEmailAndPassword } from '@angular/fire/auth';
 import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
 import { RouterModule } from '@angular/router';
 import { Router } from '@angular/router';
-import { FormsModule } from '@angular/forms';
-import { CommonModule } from '@angular/common';
-import { MatButtonModule } from '@angular/material/button';
-import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatInputModule } from '@angular/material/input';
+import { SharedModule } from '../shared/shared.module';
 import { MatCardModule } from '@angular/material/card';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-login',
-  standalone: true,
-  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatFormFieldModule, MatInputModule, MatCardModule, MatIconModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.scss'
+    selector: 'app-login',
+    standalone: true,
+    imports: [SharedModule],
+    templateUrl: './login.component.html',
+    styleUrl: './login.component.scss'
 })
 export class LoginComponent implements OnInit {
   private auth: Auth = inject(Auth);

@@ -14,12 +14,12 @@ import { MatExpansionModule } from '@angular/material/expansion';
 import { MatListModule } from '@angular/material/list';
 
 @Component({
-  selector: 'app-season3',
-  standalone: true,
-  imports: [MatCheckboxModule, MatButtonModule, MatDividerModule, MatExpansionModule, MatListModule],
-  templateUrl: './season3.component.html',
-  styleUrl: './season3.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    selector: 'app-season3',
+    standalone: true,
+    imports: [MatCheckboxModule, MatButtonModule, MatDividerModule, MatExpansionModule, MatListModule],
+    templateUrl: './season3.component.html',
+    styleUrl: './season3.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Season3Component implements OnInit {
 

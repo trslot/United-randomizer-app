@@ -1,30 +1,32 @@
-<mat-card>
-  <mat-card-title>Create a game</mat-card-title>
-  <mat-card-content>
-    <mat-form-field appearance="fill">
-      <mat-label>Number of Players</mat-label>
-      <select matNativeControl [(ngModel)]="playerCount">
-        <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
-      </select>
-    </mat-form-field>
-    <div class="results" *ngIf="selectedHeroes.length || selectedVillain || selectedLocations.length">
-      <h4>Selected Heroes</h4>
-      <ul>
-        <li *ngFor="let hero of selectedHeroes">{{ hero }}</li>
-      </ul>
+<div class="center-content">
+  <mat-card>
+    <mat-card-title>Create a game</mat-card-title>
+    <mat-card-content>
+      <mat-form-field appearance="fill">
+        <mat-label>Number of Players</mat-label>
+        <select matNativeControl [(ngModel)]="playerCount">
+          <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
+        </select>
+      </mat-form-field>
+      <div class="results" *ngIf="selectedHeroes.length || selectedVillain || selectedLocations.length">
+        <h4>Selected Heroes</h4>
+        <ul>
+          <li *ngFor="let hero of selectedHeroes">{{ hero }}</li>
+        </ul>
 
-      <h4>Selected Villain</h4>
-      <ul>
-        <li>{{ selectedVillain }}</li>
-      </ul>
+        <h4>Selected Villain</h4>
+        <ul>
+          <li>{{ selectedVillain }}</li>
+        </ul>
 
-      <h4>Selected Locations</h4>
-      <ul>
-        <li *ngFor="let location of selectedLocations">{{ location }}</li>
-      </ul>
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="randomize()">Randomize</button>
-  </mat-card-actions>
-</mat-card>
+        <h4>Selected Locations</h4>
+        <ul>
+          <li *ngFor="let location of selectedLocations">{{ location }}</li>
+        </ul>
+      </div>
+    </mat-card-content>
+    <mat-card-actions>
+      <button mat-raised-button (click)="randomize()">Randomize</button>
+    </mat-card-actions>
+  </mat-card>
+</div>

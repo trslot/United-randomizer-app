@@ -14,12 +14,12 @@ import { MatLabel } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 
 @Component({
-  selector: 'app-season1-dc',
-  standalone: true,
-  imports: [MatCheckboxModule, MatButtonModule, MatDividerModule, MatExpansionModule, MatListModule, MatLabel, MatIconModule],
-  templateUrl: './season1-dc.component.html',
-  styleUrl: './season1-dc.component.scss',
-  changeDetection: ChangeDetectionStrategy.OnPush
+    standalone: true,
+    selector: 'app-season1-dc',
+    imports: [MatCheckboxModule, MatButtonModule, MatDividerModule, MatExpansionModule, MatListModule, MatLabel, MatIconModule],
+    templateUrl: './season1-dc.component.html',
+    styleUrl: './season1-dc.component.scss',
+    changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class Season1DcComponent implements OnInit {
 
