@@ -152,5 +152,10 @@ export class HomeComponent implements OnInit {
 
   onIncludePetsChange(event: any): void {
     this.includePets = event.checked;
+    this.selectedHeroes = [];
+    this.selectedVillain = [];
+    this.selectedAntiHeroes = [];
+    this.selectedLocations = [];
+    this.selectedPets = [];
   }
 }
