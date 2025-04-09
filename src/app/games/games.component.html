@@ -3,7 +3,7 @@
     <h4>Manage your games</h4>
   </div>
   <div>
-    <mat-tab-group>
+    <mat-tab-group [selectedIndex]="selectedIndex" (touchstart)="onSwipeStart($event)" (touchmove)="onSwipeMove($event)" (touchend)="onSwipeEnd()">
       <mat-tab label="Marvel United"><app-season1></app-season1></mat-tab>
       <mat-tab label="Marvel United: X-Men"><app-season2></app-season2></mat-tab>
       <mat-tab label="Marvel United: Multiverse"><app-season3></app-season3></mat-tab>

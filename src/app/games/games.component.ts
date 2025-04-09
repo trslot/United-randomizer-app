@@ -1,3 +1,4 @@
+import { MatTabGroup } from '@angular/material/tabs';
 import { Component, ViewChild } from '@angular/core';
 import { RouterModule } from '@angular/router';
 import { Season1Component } from '../marvel-united/season1/season1.component';
@@ -17,6 +18,11 @@ import { getAuth } from '@firebase/auth';
     styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
+  @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
+  selectedIndex: number = 0;
+  private startX: number = 0;
+  private currentX: number = 0;
+  private swipeThreshold: number = 50; // Minimum pixels to trigger swipe
   @ViewChild(Season1Component) season1Component!: Season1Component;
   @ViewChild(Season2Component) season2Component!: Season2Component;
   @ViewChild(Season3Component) season3Component!: Season3Component;
@@ -86,6 +92,50 @@ export class GamesComponent {
 
     } catch (error) {
       console.error('Error saving selections:', error);
+    }
+  }
+
+
+  // Swipe navigation methods
+  onSwipeStart(event: TouchEvent): void {
+    this.startX = event.touches[0].clientX;
+    this.currentX = this.startX;
+  }
+
+  onSwipeMove(event: TouchEvent): void {
+    this.currentX = event.touches[0].clientX;
+  }
+
+  onSwipeEnd(): void {
+    const deltaX = this.currentX - this.startX;
+
+    if (Math.abs(deltaX) > this.swipeThreshold) {
+      if (deltaX < 0) {
+        // Swiped left
+        this.swipeRight();
+      } else {
+        // Swiped right
+        this.swipeLeft();
+      }
+    }
+    // Reset positions
+    this.startX = 0;
+    this.currentX = 0;
+  }
+
+  swipeLeft(): void {
+    const numTabs = this.tabGroup?._tabs?.length ?? 0;
+    if (numTabs > 0) {
+      this.selectedIndex = (this.selectedIndex === 0) ? (numTabs - 1) : (this.selectedIndex - 1);
+      this.tabGroup.selectedIndex = this.selectedIndex;
+    }
+  }
+
+  swipeRight(): void {
+    const numTabs = this.tabGroup?._tabs?.length ?? 0;
+    if (numTabs > 0) {
+      this.selectedIndex = (this.selectedIndex === numTabs - 1) ? 0 : (this.selectedIndex + 1);
+      this.tabGroup.selectedIndex = this.selectedIndex;
     }
   }
 }

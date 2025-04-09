@@ -1,10 +1,17 @@
+.swipe-container {
+  touch-action: pan-y; /* Allow vertical scroll, capture horizontal swipe */
+  display: block; /* Ensure it's a block element */
+}
+
+
 /* Styles for GamesComponent */
 .account-header {
   display: flex;
-  justify-content: space-between;
+  justify-content: center;
   align-items: center;
   margin-bottom: 15px;
 }
+
 .save-button-container {
   position: fixed;
   bottom: 20px;
