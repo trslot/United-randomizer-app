@@ -1,9 +1,6 @@
 <div>
   <h2 class="title-center">United</h2>
   <div class="top-right-container">
-    <button mat-mini-fab *ngIf="isLoggedIn" (click)="showMobileMenu = !showMobileMenu">
-      <mat-icon>more_vert</mat-icon>
-    </button>
 
     <div class="top-menu" *ngIf="isLoggedIn">
       <button mat-button (click)="navigateTo('/home')">
@@ -20,20 +17,6 @@
       </button>
     </div>
 
-    <div class="mobile-menu" *ngIf="showMobileMenu && isLoggedIn">
-      <button mat-button (click)="navigateTo('/home'); showMobileMenu = false">
-        Home
-      </button>
-      <button mat-button (click)="navigateTo('/games'); showMobileMenu = false">
-        Games
-      </button>
-      <button mat-button (click)="navigateTo('/account'); showMobileMenu = false">
-        Account
-      </button>
-      <button mat-button (click)="logout(); showMobileMenu = false">
-        Logout
-      </button>
-    </div>
   </div>
   <router-outlet></router-outlet> <!-- Always render router outlet -->
 </div>
