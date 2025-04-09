@@ -11,3 +11,12 @@
   right: 20px;
   z-index: 1000;
 }
+
+
+@media (min-width: 600px) {
+  .center-content {
+    margin: 0 auto;
+    max-width: 80%;
+    width: 100%;
+  }
+}

@@ -11,7 +11,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of dcSuperHeroesHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -19,7 +19,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of dcSuperHeroesVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <!-- <mat-expansion-panel class="panelLocations">
@@ -27,7 +27,7 @@
                 <mat-panel-title>Locations </mat-panel-title>
             </mat-expansion-panel-header>
             @for (location of dcSuperHeroesLocations; track $index) {
-            <mat-list-item>{{location}}</mat-list-item>
+            <mat-list-item>{{location.name}}</mat-list-item>
             }
         </mat-expansion-panel> -->
     </mat-expansion-panel>
@@ -42,7 +42,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of arkhamAsylumBreakoutHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -50,7 +50,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of arkhamAsylumBreakoutVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <!-- <mat-expansion-panel class="panelLocations">
@@ -58,7 +58,7 @@
                 <mat-panel-title>Locations </mat-panel-title>
             </mat-expansion-panel-header>
             @for (location of arkhamAsylumBreakoutLocations; track $index) {
-            <mat-list-item>{{location}}</mat-list-item>
+            <mat-list-item>{{location.name}}</mat-list-item>
             }
         </mat-expansion-panel> -->
     </mat-expansion-panel>
@@ -73,7 +73,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of gothamCityHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelDualModes">
@@ -81,7 +81,7 @@
                 <mat-panel-title>Dual-Modes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of gothamCityDualModes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -89,7 +89,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of gothamCityVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <!-- <mat-expansion-panel class="panelLocations">
@@ -97,7 +97,7 @@
                 <mat-panel-title>Locations </mat-panel-title>
             </mat-expansion-panel-header>
             @for (location of gothamCityLocations; track $index) {
-            <mat-list-item>{{location}}</mat-list-item>
+            <mat-list-item>{{location.name}}</mat-list-item>
             }
         </mat-expansion-panel> -->
         <mat-expansion-panel class="panelSupports">
@@ -105,7 +105,7 @@
                 <mat-panel-title>Supports </mat-panel-title>
             </mat-expansion-panel-header>
             @for (support of gothamCitySupports; track $index) {
-            <mat-list-item>{{support}}</mat-list-item>
+            <mat-list-item>{{support.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -120,7 +120,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of greenLaternCorpsHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -135,7 +135,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of jsaHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelDualModes">
@@ -143,7 +143,7 @@
                 <mat-panel-title>Dual-Modes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (dualMode of jsaDualModes; track $index) {
-            <mat-list-item>{{dualMode}}</mat-list-item>
+            <mat-list-item>{{dualMode.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -158,7 +158,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of metropolisHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -166,7 +166,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of metropolisVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelLocations">
@@ -174,7 +174,7 @@
                 <mat-panel-title>Locations </mat-panel-title>
             </mat-expansion-panel-header>
             @for (location of metropolisLocations; track $index) {
-            <mat-list-item>{{location}}</mat-list-item>
+            <mat-list-item>{{location.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelSupports">
@@ -182,7 +182,7 @@
                 <mat-panel-title>Supports </mat-panel-title>
             </mat-expansion-panel-header>
             @for (support of metropolisSupports; track $index) {
-            <mat-list-item>{{support}}</mat-list-item>
+            <mat-list-item>{{support.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -197,7 +197,7 @@
                 <mat-panel-title>Sidekicks </mat-panel-title>
             </mat-expansion-panel-header>
             @for (sidekick of sidekicks; track $index) {
-            <mat-list-item>{{sidekick}}</mat-list-item>
+            <mat-list-item>{{sidekick.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -212,7 +212,7 @@
                 <mat-panel-title>Dual-Modes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (dualMode of suicideSquadDualModes; track $index) {
-            <mat-list-item>{{dualMode}}</mat-list-item>
+            <mat-list-item>{{dualMode.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -227,7 +227,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of teenTitansHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -235,7 +235,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villains of teenTitansVillains; track $index) {
-            <mat-list-item>{{villains}}</mat-list-item>
+            <mat-list-item>{{villains.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -250,7 +250,7 @@
                 <mat-panel-title>Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of warOfLightHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelDualModes">
@@ -258,7 +258,7 @@
                 <mat-panel-title>Dual Modes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (dualMode of warOfLightDualModes; track $index) {
-            <mat-list-item>{{dualMode}}</mat-list-item>
+            <mat-list-item>{{dualMode.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -266,7 +266,7 @@
                 <mat-panel-title>Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villains of warOfLightVillains; track $index) {
-            <mat-list-item>{{villains}}</mat-list-item>
+            <mat-list-item>{{villains.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>
@@ -282,7 +282,7 @@
                 <mat-panel-title>Pledge Bonus Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of pledgeBonusHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -290,7 +290,7 @@
                 <mat-panel-title>Pledge Bonus Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of pledgeBonusVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelSupports">
@@ -298,7 +298,7 @@
                 <mat-panel-title>Pledge Bonus Supports </mat-panel-title>
             </mat-expansion-panel-header>
             @for (support of pledgeBonusSupports; track $index) {
-            <mat-list-item>{{support}}</mat-list-item>
+            <mat-list-item>{{support.name}}</mat-list-item>
             }
         </mat-expansion-panel>
 
@@ -308,7 +308,7 @@
                 <mat-panel-title>Stretch Goals Heroes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (hero of stretchGoalsHeroes; track $index) {
-            <mat-list-item>{{hero}}</mat-list-item>
+            <mat-list-item>{{hero.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelDualModes">
@@ -316,7 +316,7 @@
                 <mat-panel-title>Stretch Goals Dual Modes </mat-panel-title>
             </mat-expansion-panel-header>
             @for (dualMode of stretchGoalsDualModes; track $index) {
-            <mat-list-item>{{dualMode}}</mat-list-item>
+            <mat-list-item>{{dualMode.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelVillains">
@@ -324,7 +324,7 @@
                 <mat-panel-title>Stretch Goals Villains </mat-panel-title>
             </mat-expansion-panel-header>
             @for (villain of stretchGoalsVillains; track $index) {
-            <mat-list-item>{{villain}}</mat-list-item>
+            <mat-list-item>{{villain.name}}</mat-list-item>
             }
         </mat-expansion-panel>
         <mat-expansion-panel class="panelLocations">
@@ -332,7 +332,7 @@
                 <mat-panel-title>Stretch Goals Locations </mat-panel-title>
             </mat-expansion-panel-header>
             @for (location of stretchGoalsLocations; track $index) {
-            <mat-list-item>{{location}}</mat-list-item>
+            <mat-list-item>{{location.name}}</mat-list-item>
             }
         </mat-expansion-panel>
     </mat-expansion-panel>

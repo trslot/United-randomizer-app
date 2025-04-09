@@ -1,11 +1,9 @@
 import { Component, OnInit, inject } from '@angular/core';
 import { signInWithEmailAndPassword } from '@angular/fire/auth';
-import { Auth, signInWithPopup, GoogleAuthProvider } from '@angular/fire/auth';
-import { RouterModule } from '@angular/router';
+import { Auth, signInWithPopup, GoogleAuthProvider, createUserWithEmailAndPassword } from '@angular/fire/auth';
 import { Router } from '@angular/router';
 import { SharedModule } from '../shared/shared.module';
-import { MatCardModule } from '@angular/material/card';
-import { MatIconModule } from '@angular/material/icon';
+
 
 @Component({
     selector: 'app-login',
@@ -20,6 +18,14 @@ export class LoginComponent implements OnInit {
 
   email = '';
   password = '';
+  showRegisterForm = false;
+
+  toggleRegisterForm() {
+    this.showRegisterForm = !this.showRegisterForm;
+    this.errorMessage = null;
+    this.email = '';
+    this.password = '';
+  }
   errorMessage: string | null = null;
 
   ngOnInit(): void {
@@ -69,5 +75,32 @@ export class LoginComponent implements OnInit {
           this.errorMessage = 'An error occurred during login. Please try again.';
         }
       });
+  }
+
+  register() {
+    this.errorMessage = null;
+    createUserWithEmailAndPassword(this.auth, this.email, this.password)
+      .then((userCredential) => {
+        const user = userCredential.user;
+        console.log('Registration successful:', user);
+        this.router.navigate(['/']);
+      })
+      .catch((error) => {
+        const errorCode = error.code;
+        const errorMessage = error.message;
+        console.error('Registration failed:', errorCode, errorMessage);
+        this.errorMessage = errorMessage;
+        if (errorCode === 'auth/email-already-in-use') {
+          this.errorMessage = 'This email address is already in use.';
+        } else if (errorCode === 'auth/weak-password') {
+          this.errorMessage = 'The password is too weak. Please use a stronger password (at least 6 characters).';
+        } else {
+          this.errorMessage = 'An error occurred during registration. Please try again.';
+        }
+      });
+  }  
+  
+  navigateTo(path: string): void {
+    this.router.navigate([path]);
   }
 }

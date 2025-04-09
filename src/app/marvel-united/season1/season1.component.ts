@@ -33,29 +33,29 @@ export class Season1Component implements OnInit {
     measurementId: environment.firebase.measurementId
   }
 
-  selectedHeroes: string[] = [];
-  selectedVillains: string[] = [];
-  selectedLocations: string[] = [];
+  selectedHeroes: Array<{ name: string; game: string, type: string }> = [];
+  selectedVillains: Array<{ name: string; game: string, type: string }> = [];
+  selectedLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  isAllSelected(items: string[], selected: string[]): boolean {
-    return items.length > 0 && items.every(item => selected.includes(item));
+  isAllSelected(items: Array<{ name: string; game: string, type: string }>, selected: Array<{ name: string; game: string, type: string }>): boolean {
+    return items.length > 0 && items.every(item => selected.some(sel => sel.name === item.name));
   }
 
-  toggleSelectAll(items: string[], selected: string[]): void {
+  toggleSelectAll(items: Array<{ name: string; game: string, type: string }>, selected: Array<{ name: string; game: string, type: string }>): void {
     if (this.isAllSelected(items, selected)) {
       items.forEach(item => {
-        const index = selected.indexOf(item);
+        const index = selected.findIndex(sel => sel.name === item.name);
         if (index !== -1) selected.splice(index, 1);
       });
     } else {
       items.forEach(item => {
-        if (!selected.includes(item)) selected.push(item);
+        if (!selected.some(sel => sel.name === item.name)) selected.push(item);
       });
     }
   }
 
-  toggleSelection(item: string, selected: string[]): void {
-    const index = selected.indexOf(item);
+  toggleSelection(item: { name: string; game: string, type: string }, selected: Array<{ name: string; game: string, type: string }>): void {
+    const index = selected.findIndex(sel => sel.name === item.name);
     if (index !== -1) {
       selected.splice(index, 1);
     } else {
@@ -63,35 +63,35 @@ export class Season1Component implements OnInit {
     }
   }
 
-  marvelUnitedHeroes: Array<string> = [];
-  marvelUnitedVillains: Array<string> = [];
-  marvelUnitedLocations: Array<string> = [];
+  marvelUnitedHeroes: Array<{ name: string; game: string, type: string }> = [];
+  marvelUnitedVillains: Array<{ name: string; game: string, type: string }> = [];
+  marvelUnitedLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  enterTheSpiderVerseHeroes: Array<string> = [];
-  enterTheSpiderVerseVillains: Array<string> = [];
-  enterTheSpiderVerseLocations: Array<string> = [];
+  enterTheSpiderVerseHeroes: Array<{ name: string; game: string, type: string }> = [];
+  enterTheSpiderVerseVillains: Array<{ name: string; game: string, type: string }> = [];
+  enterTheSpiderVerseLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  guardiansOfTheGalaxyRemixHeroes: Array<string> = [];
-  guardiansOfTheGalaxyRemixVillains: Array<string> = [];
-  guardiansOfTheGalaxyRemixLocations: Array<string> = [];
+  guardiansOfTheGalaxyRemixHeroes: Array<{ name: string; game: string, type: string }> = [];
+  guardiansOfTheGalaxyRemixVillains: Array<{ name: string; game: string, type: string }> = [];
+  guardiansOfTheGalaxyRemixLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  returnOfTheSinisterSixVillains: Array<string> = [];
+  returnOfTheSinisterSixVillains: Array<{ name: string; game: string, type: string }> = [];
 
-  riseOfTheBlackPantherHeroes: Array<string> = [];
-  riseOfTheBlackPantherVillains: Array<string> = [];
-  riseOfTheBlackPantherLocations: Array<string> = [];
+  riseOfTheBlackPantherHeroes: Array<{ name: string; game: string, type: string }> = [];
+  riseOfTheBlackPantherVillains: Array<{ name: string; game: string, type: string }> = [];
+  riseOfTheBlackPantherLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  talesOfAsgardHeroes: Array<string> = [];
-  talesOfAsgardVillains: Array<string> = [];
-  talesOfAsgardLocations: Array<string> = [];
+  talesOfAsgardHeroes: Array<{ name: string; game: string, type: string }> = [];
+  talesOfAsgardVillains: Array<{ name: string; game: string, type: string }> = [];
+  talesOfAsgardLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  theInfinityGauntletVillains: Array<string> = [];
-  theInfinityGauntletLocations: Array<string> = [];
+  theInfinityGauntletVillains: Array<{ name: string; game: string, type: string }> = [];
+  theInfinityGauntletLocations: Array<{ name: string; game: string, type: string }> = [];
 
-  unitedPledgeBonusHeroes: Array<string> = [];
+  unitedPledgeBonusHeroes: Array<{ name: string; game: string, type: string }> = [];
 
-  unitedStretchGoalsHeroes: Array<string> = [];
-  unitedStretchGoalsVillains: Array<string> = [];
+  unitedStretchGoalsHeroes: Array<{ name: string; game: string, type: string }> = [];
+  unitedStretchGoalsVillains: Array<{ name: string; game: string, type: string }> = [];
 
   async ngOnInit(): Promise<void> {
     const app = initializeApp(this.config);
@@ -106,11 +106,11 @@ export class Season1Component implements OnInit {
 
         function getFilteredNames(data: any[], game: string) {
           const gameData = data.filter((x: any) => x.season === 1 && x.game === game);
-
+      
           return {
-            heroes: gameData.filter((c: any) => c.type === 1).map((name: any) => name.name),
-            villains: gameData.filter((c: any) => c.type === 2).map((name: any) => name.name),
-            locations: gameData.filter((c: any) => c.type === 3).map((name: any) => name.name)
+            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero" })),
+            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain" })),
+            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location" }))
           };
         }
 

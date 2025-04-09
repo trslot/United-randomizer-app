@@ -34,49 +34,49 @@ export class Season1DcComponent implements OnInit {
     measurementId: environment.firebase.measurementId
   }
 
-  dcSuperHeroesHeroes: Array<string> = [];
-  dcSuperHeroesVillains: Array<string> = [];
-  dcSuperHeroesLocations: Array<string> = [];
+  dcSuperHeroesHeroes: Array<{ name: string; game: string }> = [];
+  dcSuperHeroesVillains: Array<{ name: string; game: string }> = [];
+  dcSuperHeroesLocations: Array<{ name: string; game: string }> = [];
 
-  arkhamAsylumBreakoutHeroes: Array<string> = [];
-  arkhamAsylumBreakoutVillains: Array<string> = [];
-  arkhamAsylumBreakoutLocations: Array<string> = [];
+  arkhamAsylumBreakoutHeroes: Array<{ name: string; game: string }> = [];
+  arkhamAsylumBreakoutVillains: Array<{ name: string; game: string }> = [];
+  arkhamAsylumBreakoutLocations: Array<{ name: string; game: string }> = [];
 
-  gothamCityHeroes: Array<string> = [];
-  gothamCityVillains: Array<string> = [];
-  gothamCityLocations: Array<string> = [];
-  gothamCityDualModes: Array<string> = [];
-  gothamCitySupports: Array<string> = [];
+  gothamCityHeroes: Array<{ name: string; game: string }> = [];
+  gothamCityVillains: Array<{ name: string; game: string }> = [];
+  gothamCityLocations: Array<{ name: string; game: string }> = [];
+  gothamCityDualModes: Array<{ name: string; game: string }> = [];
+  gothamCitySupports: Array<{ name: string; game: string }> = [];
 
-  greenLaternCorpsHeroes: Array<string> = [];
+  greenLaternCorpsHeroes: Array<{ name: string; game: string }> = [];
 
-  jsaHeroes: Array<string> = [];
-  jsaDualModes: Array<string> = [];
+  jsaHeroes: Array<{ name: string; game: string }> = [];
+  jsaDualModes: Array<{ name: string; game: string }> = [];
 
-  metropolisHeroes: Array<string> = [];
-  metropolisVillains: Array<string> = [];
-  metropolisLocations: Array<string> = [];
-  metropolisSupports: Array<string> = [];
+  metropolisHeroes: Array<{ name: string; game: string }> = [];
+  metropolisVillains: Array<{ name: string; game: string }> = [];
+  metropolisLocations: Array<{ name: string; game: string }> = [];
+  metropolisSupports: Array<{ name: string; game: string }> = [];
 
-  sidekicks: Array<string> = [];
+  sidekicks: Array<{ name: string; game: string }> = [];
 
-  suicideSquadDualModes: Array<string> = [];
+  suicideSquadDualModes: Array<{ name: string; game: string }> = [];
 
-  teenTitansHeroes: Array<string> = [];
-  teenTitansVillains: Array<string> = [];
+  teenTitansHeroes: Array<{ name: string; game: string }> = [];
+  teenTitansVillains: Array<{ name: string; game: string }> = [];
 
-  warOfLightHeroes: Array<string> = [];
-  warOfLightDualModes: Array<string> = [];
-  warOfLightVillains: Array<string> = [];
+  warOfLightHeroes: Array<{ name: string; game: string }> = [];
+  warOfLightDualModes: Array<{ name: string; game: string }> = [];
+  warOfLightVillains: Array<{ name: string; game: string }> = [];
 
-  pledgeBonusHeroes: Array<string> = [];
-  pledgeBonusVillains: Array<string> = [];
-  pledgeBonusSupports: Array<string> = [];
+  pledgeBonusHeroes: Array<{ name: string; game: string }> = [];
+  pledgeBonusVillains: Array<{ name: string; game: string }> = [];
+  pledgeBonusSupports: Array<{ name: string; game: string }> = [];
 
-  stretchGoalsHeroes: Array<string> = [];
-  stretchGoalsDualModes: Array<string> = [];
-  stretchGoalsVillains: Array<string> = [];
-  stretchGoalsLocations: Array<string> = [];
+  stretchGoalsHeroes: Array<{ name: string; game: string }> = [];
+  stretchGoalsDualModes: Array<{ name: string; game: string }> = [];
+  stretchGoalsVillains: Array<{ name: string; game: string }> = [];
+  stretchGoalsLocations: Array<{ name: string; game: string }> = [];
 
 
   async ngOnInit(): Promise<void> {
@@ -93,14 +93,14 @@ export class Season1DcComponent implements OnInit {
         // Helper function to filter and map the data
         function getFilteredNames(data: any[], game: string) {
           const gameData = data.filter((x: any) => x.season === 4 && x.game === game);
-
+      
           return {
-            heroes: gameData.filter((c: any) => c.type === 1).map((name: any) => name.name),
-            villains: gameData.filter((c: any) => c.type === 2).map((name: any) => name.name),
-            locations: gameData.filter((c: any) => c.type === 3).map((name: any) => name.name),
-            dualMode: gameData.filter((c: any) => c.type === 6).map((name: any) => name.name),
-            support: gameData.filter((c: any) => c.type === 7).map((name: any) => name.name),
-            sidekick: gameData.filter((c: any) => c.type === 8).map((name: any) => name.name)
+            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game })),
+            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game })),
+            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game })),
+            dualMode: gameData.filter((c: any) => c.type === 6).map((item: any) => ({ name: item.name, game })),
+            support: gameData.filter((c: any) => c.type === 7).map((item: any) => ({ name: item.name, game })),
+            sidekick: gameData.filter((c: any) => c.type === 8).map((item: any) => ({ name: item.name, game }))
           };
         }
 

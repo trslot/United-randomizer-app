@@ -1,34 +1,62 @@
 <mat-card>
   <mat-card-content class="center-content">
-    <p>Log in with</p>
-    <mat-card-actions>
+    <div *ngIf="!showRegisterForm">
+      <p>Log in with</p>
+      <mat-card-actions>
         <!-- <mat-icon svgIcon="google"></mat-icon> -->
         <mat-icon svgIcon="google" (click)="loginWithGoogle()"></mat-icon>
-    </mat-card-actions>
-
-    <p>or use your email and password</p>
-    <form (ngSubmit)="loginWithEmailPassword()">
-      <div style="display: flex; flex-direction: column; gap: 16px; width: 250px;">
-        <mat-form-field appearance="fill" style="width: 100%;">
-          <mat-label>Email</mat-label>
-          <input matInput type="email" id="email" [(ngModel)]="email" name="email" required>
-        </mat-form-field>
-
-        <mat-form-field appearance="fill" style="width: 100%;">
-          <mat-label>Password</mat-label>
-          <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
-        </mat-form-field>
-      </div>
-      <mat-card-actions>
-        <button mat-raised-button color="primary" type="submit">Login</button>
       </mat-card-actions>
-    </form>
 
-    <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
-      {{ errorMessage }}
+
+      <p>or use your email and password</p>
+      <form (ngSubmit)="loginWithEmailPassword()">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 250px;">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" id="email" [(ngModel)]="email" name="email" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" id="password" [(ngModel)]="password" name="password" required>
+          </mat-form-field>
+        </div>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Login</button>
+        </mat-card-actions>
+      </form>
+
+      <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
+        {{ errorMessage }}
+      </div>
+
+      <p>Don't have an account?</p>
+      <button mat-raised-button (click)="toggleRegisterForm()">Register here</button>
     </div>
 
-    <p>Don't have an account?</p>
-    <button mat-raised-button routerLink="/register">Register here</button>
+    <div *ngIf="showRegisterForm">
+      <p>Create a new account</p>
+      <form (ngSubmit)="register()">
+        <div style="display: flex; flex-direction: column; gap: 16px; width: 250px;">
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Email</mat-label>
+            <input matInput type="email" [(ngModel)]="email" name="email" required>
+          </mat-form-field>
+
+          <mat-form-field appearance="fill" style="width: 100%;">
+            <mat-label>Password</mat-label>
+            <input matInput type="password" [(ngModel)]="password" name="password" required minlength="6">
+          </mat-form-field>
+        </div>
+        <div *ngIf="errorMessage" style="color: red; margin-top: 10px;">
+          {{ errorMessage }}
+        </div>
+        <mat-card-actions>
+          <button mat-raised-button color="primary" type="submit">Register</button>
+        </mat-card-actions>
+      </form>
+      <p>Have an account?</p>
+      <button mat-raised-button color="primary" type="button" (click)="toggleRegisterForm()">Back to Login</button>
+    </div>
   </mat-card-content>
 </mat-card>

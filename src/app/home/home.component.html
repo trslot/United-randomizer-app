@@ -4,25 +4,56 @@
     <mat-card-content>
       <mat-form-field appearance="fill">
         <mat-label>Number of Players</mat-label>
-        <select matNativeControl [(ngModel)]="playerCount">
-          <option *ngFor="let num of [1,2,3,4,5]" [value]="num">{{ num }}</option>
-        </select>
+        <mat-select matNativeControl [(ngModel)]="playerCount">
+          <mat-option *ngFor="let num of [1,2,3,4]" [value]="num">{{ num }}</mat-option>
+        </mat-select>
       </mat-form-field>
-      <div class="results" *ngIf="selectedHeroes.length || selectedVillain || selectedLocations.length">
-        <h4>Selected Heroes</h4>
-        <ul>
-          <li *ngFor="let hero of selectedHeroes">{{ hero }}</li>
-        </ul>
+      <mat-checkbox class="white-label-checkbox" [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
+      <div class="results"
+        *ngIf="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
+        <h4>Selected {{ playerCount === 1 ? 'Hero' : 'Heroes' }}</h4>
+        <div class="hero-cards">
+          @for (hero of selectedHeroes; track $index) {
+          <mat-card class="{{hero.type}}-card">
+            <mat-card-title>
+              {{ hero.name }}
+            </mat-card-title>
+            <mat-card-footer class="game-name">
+              {{ hero.game }}
+            </mat-card-footer>
+          </mat-card>
+          }
+        </div>
 
         <h4>Selected Villain</h4>
-        <ul>
-          <li>{{ selectedVillain }}</li>
-        </ul>
+        <div class="villain-cards">
+          @for (villain of selectedVillain; track $index) {
+          <mat-card class="{{villain.type}}-card">
+            <mat-card-title>
+              {{ villain.name }}
+            </mat-card-title>
+            <mat-card-footer class="game-name">
+              {{ villain.game }}
+            </mat-card-footer>
+          </mat-card>
+          }
+        </div>
+
 
         <h4>Selected Locations</h4>
-        <ul>
-          <li *ngFor="let location of selectedLocations">{{ location }}</li>
-        </ul>
+        <div class="location-cards">
+          @for (location of selectedLocations; track $index) {
+          <mat-card class="location-card">
+            <mat-card-title>
+              {{ location.name }}
+            </mat-card-title>
+            <mat-card-footer class="game-name">
+              {{ location.game }}
+            </mat-card-footer>
+          </mat-card>
+          }
+        </div>
+
       </div>
     </mat-card-content>
     <mat-card-actions>

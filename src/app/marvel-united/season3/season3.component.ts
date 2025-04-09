@@ -34,85 +34,85 @@ export class Season3Component implements OnInit {
     measurementId: environment.firebase.measurementId
   }
 
-  marvelUnitedMultiverseHeroes: Array<string> = [];
-  marvelUnitedMultiverseAntiHeroes: Array<string> = [];
-  marvelUnitedMultiverseVillains: Array<string> = [];
-  marvelUnitedMultiverseLocations: Array<string> = [];
+  marvelUnitedMultiverseHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  marvelUnitedMultiverseAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  marvelUnitedMultiverseVillains: Array<{ name: string; game: string, type: string  }> = [];
+  marvelUnitedMultiverseLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  spiderGeddonCoreHeroes: Array<string> = [];
-  spiderGeddonCoreAntiHeroes: Array<string> = [];
-  spiderGeddonCoreVillains: Array<string> = [];
-  spiderGeddonCoreLocations: Array<string> = [];
+  spiderGeddonCoreHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  spiderGeddonCoreAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  spiderGeddonCoreVillains: Array<{ name: string; game: string, type: string  }> = [];
+  spiderGeddonCoreLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  annihilationHeroes: Array<string> = [];
-  annihilationAntiHeroes: Array<string> = [];
-  annihilationVillains: Array<string> = [];
-  annihilationLocations: Array<string> = [];
+  annihilationHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  annihilationAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  annihilationVillains: Array<{ name: string; game: string, type: string  }> = [];
+  annihilationLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  civilWarHeroes: Array<string> = [];
-  civilWarLocations: Array<string> = [];
+  civilWarHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  civilWarLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  maximumCarnageAntiHeroes: Array<string> = [];
-  maximumCarnageVillains: Array<string> = [];
-  maximumCarnageLocations: Array<string> = [];
+  maximumCarnageAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  maximumCarnageVillains: Array<{ name: string; game: string, type: string  }> = [];
+  maximumCarnageLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  petCompanions: Array<string> = [];
+  petCompanions: Array<{ name: string; game: string, type: string  }> = [];
 
-  secretInvasionHeroes: Array<string> = [];
-  secretInvasionVillains: Array<string> = [];
-  secretInvasionLocations: Array<string> = [];
+  secretInvasionHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  secretInvasionVillains: Array<{ name: string; game: string, type: string  }> = [];
+  secretInvasionLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  theAgeOfApocalypseHeroes: Array<string> = [];
-  theAgeOfApocalypseVillains: Array<string> = [];
-  theAgeOfApocalypseLocations: Array<string> = [];
+  theAgeOfApocalypseHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  theAgeOfApocalypseVillains: Array<{ name: string; game: string, type: string  }> = [];
+  theAgeOfApocalypseLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  theComingOfGalactusAntiHeroes: Array<string> = [];
-  theComingOfGalactusVillains: Array<string> = [];
-  theComingOfGalactusLocations: Array<string> = [];
+  theComingOfGalactusAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  theComingOfGalactusVillains: Array<{ name: string; game: string, type: string  }> = [];
+  theComingOfGalactusLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  warOfKingsHeroes: Array<string> = [];
-  warOfKingsAntiHeroes: Array<string> = [];
-  warOfKingsVillains: Array<string> = [];
-  warOfKingsLocations: Array<string> = [];
+  warOfKingsHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  warOfKingsAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  warOfKingsVillains: Array<{ name: string; game: string, type: string  }> = [];
+  warOfKingsLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  worldWarHulkHeroes: Array<string> = [];
-  worldWarHulkAntiHeroes: Array<string> = [];
-  worldWarHulkLocations: Array<string> = [];
+  worldWarHulkHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  worldWarHulkAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  worldWarHulkLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  multiversePledgeBonusHeroes: Array<string> = [];
-  multiversePledgeBonusVillains: Array<string> = [];
-  multiversePledgeBonusLocations: Array<string> = [];
+  multiversePledgeBonusHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  multiversePledgeBonusVillains: Array<{ name: string; game: string, type: string  }> = [];
+  multiversePledgeBonusLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  multiversePromosHeroes: Array<string> = [];
-  multiversePromosAntiHeroes: Array<string> = [];
-  multiversePromosVillains: Array<string> = [];
-  multiversePromosLocations: Array<string> = [];
+  multiversePromosHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  multiversePromosAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  multiversePromosVillains: Array<{ name: string; game: string, type: string  }> = [];
+  multiversePromosLocations: Array<{ name: string; game: string, type: string  }> = [];
 
-  selectedHeroes: string[] = [];
-  selectedVillains: string[] = [];
-  selectedLocations: string[] = [];
-  selectedAntiHeroes: string[] = [];
-  selectedPets: string[] = [];
+  selectedHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  selectedVillains: Array<{ name: string; game: string, type: string  }> = [];
+  selectedLocations: Array<{ name: string; game: string, type: string  }> = [];
+  selectedAntiHeroes: Array<{ name: string; game: string, type: string  }> = [];
+  selectedPets: Array<{ name: string; game: string, type: string  }> = [];
 
-  isAllSelected(items: string[], selected: string[]): boolean {
-    return items.length > 0 && items.every(item => selected.includes(item));
+  isAllSelected(items: Array<{ name: string; game: string, type: string  }>, selected: Array<{ name: string; game: string, type: string  }>): boolean {
+    return items.length > 0 && items.every(item => selected.some(sel => sel.name === item.name));
   }
 
-  toggleSelectAll(items: string[], selected: string[]): void {
+  toggleSelectAll(items: Array<{ name: string; game: string, type: string  }>, selected: Array<{ name: string; game: string, type: string  }>): void {
     if (this.isAllSelected(items, selected)) {
       items.forEach(item => {
-        const index = selected.indexOf(item);
+        const index = selected.findIndex(sel => sel.name === item.name);
         if (index !== -1) selected.splice(index, 1);
       });
     } else {
       items.forEach(item => {
-        if (!selected.includes(item)) selected.push(item);
+        if (!selected.some(sel => sel.name === item.name)) selected.push(item);
       });
     }
   }
 
-  toggleSelection(item: string, selected: string[]): void {
-    const index = selected.indexOf(item);
+  toggleSelection(item: { name: string; game: string, type: string  }, selected: Array<{ name: string; game: string, type: string  }>): void {
+    const index = selected.findIndex(sel => sel.name === item.name);
     if (index !== -1) {
       selected.splice(index, 1);
     } else {
@@ -135,13 +135,13 @@ export class Season3Component implements OnInit {
         // Helper function to filter and map the data
         function getFilteredNames(data: any[], game: string) {
           const gameData = data.filter((x: any) => x.season === 3 && x.game === game);
-
+      
           return {
-            heroes: gameData.filter((c: any) => c.type === 1).map((name: any) => name.name),
-            villains: gameData.filter((c: any) => c.type === 2).map((name: any) => name.name),
-            locations: gameData.filter((c: any) => c.type === 3).map((name: any) => name.name),
-            antiHeroes: gameData.filter((c: any) => c.type === 4).map((name: any) => name.name),
-            pets: gameData.filter((c: any) => c.type === 5).map((name: any) => name.name)
+            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero" })),
+            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain"})),
+            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location" })),
+            antiHeroes: gameData.filter((c: any) => c.type === 4).map((item: any) => ({ name: item.name, game, type: "anti-hero" })),
+            pets: gameData.filter((c: any) => c.type === 5).map((item: any) => ({ name: item.name, game, type: "pet" }))
           };
         }
 

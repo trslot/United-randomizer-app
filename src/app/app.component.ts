@@ -35,6 +35,7 @@ export class AppComponent implements OnInit {
   isLoggedIn: boolean = false;
   user: User | null = null;
   title = 'United-randomizer-app';
+  showMobileMenu: boolean = false;
 
 
   ngOnInit(): void {

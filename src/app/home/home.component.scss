@@ -13,9 +13,18 @@ button {
 .results h2 {
   margin-top: 20px;
 }
+
 ul {
   list-style-type: none;
   padding-left: 0;
+}
+
+.game-name {
+  font-size: small;
+}
+
+#mat-mdc-slide-toggle-1-label {
+  color: white;
 }
 
 .center-content {
@@ -32,10 +41,50 @@ ul {
   }
 }
 
+.hero-cards,
+.villain-cards,
+.location-cards {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+
+  mat-card {
+    width: 350px;
+  }
+
+  .hero-card {
+    background-color: lightblue;
+    color: black;
+  }
+
+  .villain-card {
+    background-color: pink;
+    color: black;
+  }
+
+  .location-card {
+    background-color: lightgray;
+    color: black;
+  }
+
+  .anti-hero-card {
+    background-color: plum;
+    color: black;
+  }
+}
+
 @media (min-width: 600px) {
   mat-card {
     margin: 0 auto;
-    max-width: 400px;
+    max-width: 80%;
     width: 100%;
   }
+}
+
+::ng-deep mat-checkbox .mdc-label {
+  color: white !important;
+}
+
+mat-checkbox {
+  margin-left: 20px;
 }
