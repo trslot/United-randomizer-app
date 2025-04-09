@@ -78,6 +78,35 @@ ul {
   }
 }
 
+@media (min-width: 950px) {
+  
+  .hero-cards.four-heroes {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 10px;
+  }
+}
+
+
 mat-checkbox {
   margin-left: 20px;
+}
+
+@media (max-width: 599px) {
+  mat-card {
+    margin: 0 auto;
+    width: 90%;
+  }
+
+  .controls-row {
+    flex-direction: column;
+    align-items: center;
+  }
+}
+.controls-row {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 15px;
+  margin-bottom: 15px;
 }

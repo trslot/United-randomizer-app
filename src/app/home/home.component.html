@@ -2,17 +2,23 @@
   <mat-card>
     <mat-card-title>Create a game</mat-card-title>
     <mat-card-content>
-      <mat-form-field appearance="fill">
-        <mat-label>Number of Players</mat-label>
-        <mat-select matNativeControl [(ngModel)]="playerCount">
-          <mat-option *ngFor="let num of [1,2,3,4]" [value]="num">{{ num }}</mat-option>
-        </mat-select>
-      </mat-form-field>
-      <mat-checkbox [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
+      <div class="controls-row">
+        <mat-form-field appearance="fill">
+          <mat-label>Number of Players</mat-label>
+          <mat-select matNativeControl [(ngModel)]="playerCount">
+            <mat-option *ngFor="let num of [1,2,3,4]" [value]="num">{{ num }}</mat-option>
+          </mat-select>
+        </mat-form-field>
+        <button mat-raised-button (click)="randomize()">Randomize</button>
+      </div>
+      @if (allPets.length > 0) {
+        <mat-checkbox [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
+      }
+        
       <div class="results"
         *ngIf="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
         <h4>Selected Hero{{ playerCount === 1 ? '' : 'es' }}</h4>
-        <div class="hero-cards">
+        <div class="hero-cards" [ngClass]="{'four-heroes': selectedHeroes.length === 4}">
           @for (hero of selectedHeroes; track $index) {
           <mat-card class="{{hero.type}}-card">
             <mat-card-title>
@@ -25,18 +31,20 @@
           }
         </div>
 
-        <h4>Selected Pet{{ playerCount === 1 ? '' : 's' }}</h4>
-        <div class="pet-cards">
-          @for (pet of selectedPets; track $index) {
-          <mat-card class="{{pet.type}}-card">
-            <mat-card-title>
-              {{ pet.name }}
-            </mat-card-title>
-            <mat-card-footer class="game-name">
-              {{ pet.game }}
-            </mat-card-footer>
-          </mat-card>
-          }
+        <div *ngIf="includePets && selectedPets.length > 0">
+          <h4>Selected Pet{{ playerCount === 1 ? '' : 's' }}</h4>
+          <div class="pet-cards">
+            @for (pet of selectedPets; track $index) {
+            <mat-card class="{{pet.type}}-card">
+              <mat-card-title>
+                {{ pet.name }}
+              </mat-card-title>
+              <mat-card-footer class="game-name">
+                {{ pet.game }}
+              </mat-card-footer>
+            </mat-card>
+            }
+          </div>
         </div>
 
         <h4>Selected Villain</h4>
@@ -70,7 +78,4 @@
 
       </div>
     </mat-card-content>
-    <mat-card-actions>
-      <button mat-raised-button (click)="randomize()">Randomize</button>
-    </mat-card-actions>
   </mat-card>
