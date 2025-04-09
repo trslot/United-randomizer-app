@@ -8,7 +8,7 @@
           <mat-option *ngFor="let num of [1,2,3,4]" [value]="num">{{ num }}</mat-option>
         </mat-select>
       </mat-form-field>
-      <mat-checkbox class="white-label-checkbox" [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
+      <mat-checkbox [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
       <div class="results"
         *ngIf="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
         <h4>Selected {{ playerCount === 1 ? 'Hero' : 'Heroes' }}</h4>

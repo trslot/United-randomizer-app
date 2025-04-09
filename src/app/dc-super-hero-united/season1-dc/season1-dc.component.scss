@@ -1,6 +1,5 @@
 .title {
   font-weight: 500;
-  color: white;
 }
 
 .warning {
@@ -8,4 +7,28 @@
   text-align: center;
   display: block;
   margin: 10px auto;
+}
+
+.panelHeroes { 
+  background-color: lightblue;
+}
+
+.panelDualModes{
+  background-color: plum;
+}
+
+.panelVillains {
+  background-color: pink;
+}
+
+.panelLocations { 
+  background-color: lightgray;
+}
+
+.panelPets { 
+  background-color: goldenrod;
+}
+
+.panelSupports {
+  background-color: gray;
 }

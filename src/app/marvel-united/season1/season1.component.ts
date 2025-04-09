@@ -206,6 +206,17 @@ export class Season1Component implements OnInit {
       }
     });
   }
+  isHeroSelected(hero: { name: string; game: string; type: string }): boolean {
+    return this.selectedHeroes.some(h => h.name === hero.name);
+  }
+
+  isVillainSelected(villain: { name: string; game: string; type: string }): boolean {
+    return this.selectedVillains.some(v => v.name === villain.name);
+  }
+
+  isLocationSelected(location: { name: string; game: string; type: string }): boolean {
+    return this.selectedLocations.some(l => l.name === location.name);
+  }
 
 }
 

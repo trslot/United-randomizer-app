@@ -23,10 +23,6 @@ ul {
   font-size: small;
 }
 
-#mat-mdc-slide-toggle-1-label {
-  color: white;
-}
-
 .center-content {
   display: flex;
   flex-direction: column;
@@ -79,10 +75,6 @@ ul {
     max-width: 80%;
     width: 100%;
   }
-}
-
-::ng-deep mat-checkbox .mdc-label {
-  color: white !important;
 }
 
 mat-checkbox {

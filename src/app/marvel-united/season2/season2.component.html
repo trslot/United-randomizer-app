@@ -19,7 +19,7 @@
 
             @for (hero of marvelUnitedXMenHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -42,7 +42,7 @@
 
             @for (antiHero of marvelUnitedXMenAntiHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                <mat-checkbox [checked]="isAntiHeroSelected(antiHero)"
                               (change)="toggleSelection(antiHero, selectedAntiHeroes)">
                     {{ antiHero.name }}
                 </mat-checkbox>
@@ -65,7 +65,7 @@
 
             @for (villain of marvelUnitedXMenVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -88,7 +88,7 @@
 
             @for (location of marvelUnitedXMenLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -118,7 +118,7 @@
 
             @for (hero of blueTeamHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -141,7 +141,7 @@
 
             @for (villain of blueTeamVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -164,7 +164,7 @@
 
             @for (location of blueTeamLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -194,7 +194,7 @@
 
             @for (hero of daysOfFuturePastHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -217,7 +217,7 @@
 
             @for (villain of daysOfFuturePastVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -247,7 +247,7 @@
 
             @for (hero of deadpoolHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -270,7 +270,7 @@
 
             @for (antiHero of deadpoolAntiHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                <mat-checkbox [checked]="isAntiHeroSelected(antiHero)"
                               (change)="toggleSelection(antiHero, selectedAntiHeroes)">
                     {{ antiHero.name }}
                 </mat-checkbox>
@@ -293,7 +293,7 @@
 
             @for (villain of deadpoolVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -316,7 +316,7 @@
 
             @for (location of deadpoolLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -346,7 +346,7 @@
 
             @for (hero of fantasticFourHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -369,7 +369,7 @@
 
             @for (antiHero of fantasticFourAntiHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                <mat-checkbox [checked]="isAntiHeroSelected(antiHero)"
                               (change)="toggleSelection(antiHero, selectedAntiHeroes)">
                     {{ antiHero.name }}
                 </mat-checkbox>
@@ -392,7 +392,7 @@
 
             @for (villain of fantasticFourVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -415,7 +415,7 @@
 
             @for (location of fantasticFourLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -445,7 +445,7 @@
 
             @for (hero of firstClassHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -468,7 +468,7 @@
 
             @for (villain of firstClassVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -491,7 +491,7 @@
 
             @for (location of firstClassLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -521,7 +521,7 @@
 
             @for (hero of goldTeamHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -544,7 +544,7 @@
 
             @for (villain of goldTeamVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -567,7 +567,7 @@
 
             @for (location of goldTeamLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -597,7 +597,7 @@
 
             @for (hero of phoenixFiveHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -620,7 +620,7 @@
 
             @for (villain of phoenixFiveVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -650,7 +650,7 @@
 
             @for (antiHero of theHorsemenOfApocalypseAntiHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                <mat-checkbox [checked]="isAntiHeroSelected(antiHero)"
                               (change)="toggleSelection(antiHero, selectedAntiHeroes)">
                     {{ antiHero.name }}
                 </mat-checkbox>
@@ -673,7 +673,7 @@
 
             @for (villain of theHorsemenOfApocalypseVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -696,7 +696,7 @@
 
             @for (location of theHorsemenOfApocalypseLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -726,7 +726,7 @@
 
             @for (hero of xForceHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -749,7 +749,7 @@
 
             @for (villain of xForceVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
@@ -772,7 +772,7 @@
 
             @for (location of xForceLocations; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedLocations.includes(location)"
+                <mat-checkbox [checked]="isLocationSelected(location)"
                               (change)="toggleSelection(location, selectedLocations)">
                     {{ location.name }}
                 </mat-checkbox>
@@ -803,7 +803,7 @@
 
             @for (hero of mutantPledgeBonusHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -827,7 +827,7 @@
 
             @for (hero of mutantPromosHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedHeroes.includes(hero)"
+                <mat-checkbox [checked]="isHeroSelected(hero)"
                               (change)="toggleSelection(hero, selectedHeroes)">
                     {{ hero.name }}
                 </mat-checkbox>
@@ -850,7 +850,7 @@
 
             @for (antiHero of mutantPromosAntiHeroes; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedAntiHeroes.includes(antiHero)"
+                <mat-checkbox [checked]="isAntiHeroSelected(antiHero)"
                               (change)="toggleSelection(antiHero, selectedAntiHeroes)">
                     {{ antiHero.name }}
                 </mat-checkbox>
@@ -873,7 +873,7 @@
 
             @for (villain of mutantPromosVillains; track $index) {
             <mat-list-item>
-                <mat-checkbox [checked]="selectedVillains.includes(villain)"
+                <mat-checkbox [checked]="isVillainSelected(villain)"
                               (change)="toggleSelection(villain, selectedVillains)">
                     {{ villain.name }}
                 </mat-checkbox>
