@@ -10,7 +10,6 @@ export class AuthService {
 
   isAuthenticated(): boolean {
     const user = this.auth.currentUser;
-    console.log('AuthService.isAuthenticated() Firebase user:', user);
     return !!user;
   }
 }

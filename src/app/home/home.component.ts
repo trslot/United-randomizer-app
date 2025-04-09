@@ -88,13 +88,11 @@ export class HomeComponent implements OnInit {
             this.allLocations = data['locations'] || [];
             this.allPets = data['pets'] || [];
           } else {
-            console.log('No saved selections found for user');
           }
         }).catch((error) => {
           console.error('Error fetching user selections:', error);
         });
       } else {
-        console.log("No data available");
       }
     });
   }

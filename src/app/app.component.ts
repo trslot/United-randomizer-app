@@ -39,13 +39,9 @@ export class AppComponent implements OnInit {
 
 
   ngOnInit(): void {
-    const body = document.body;
-    body.classList.add('dark-theme');
-
     onAuthStateChanged(this.auth, (user) => {
       this.isLoggedIn = !!user;
       this.user = user;
-      console.log('Auth state changed, logged in:', this.isLoggedIn);
       if (user) {
         const currentUrl = this.router.url;
         if (currentUrl === '/' || currentUrl === '/login') {
@@ -57,7 +53,6 @@ export class AppComponent implements OnInit {
 
   logout(): void {
     signOut(this.auth).then(() => {
-      console.log('User logged out');
       this.router.navigate(['/']);
     }).catch((error: any) => {
       console.error('Logout failed:', error);

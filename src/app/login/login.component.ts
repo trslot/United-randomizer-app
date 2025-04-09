@@ -29,11 +29,7 @@ export class LoginComponent implements OnInit {
   errorMessage: string | null = null;
 
   ngOnInit(): void {
-    this.auth.onAuthStateChanged(user => {
-      if (user) {
-        console.log('User already logged in:', user);
-      }
-    });
+
   }
 
   loginWithGoogle() {
@@ -43,7 +39,6 @@ export class LoginComponent implements OnInit {
         const credential = GoogleAuthProvider.credentialFromResult(result);
         const token = credential?.accessToken;
         const user = result.user;
-        console.log('Login successful:', user);
         localStorage.setItem('userToken', 'true');
         this.router.navigate(['/home']);
       }).catch((error) => {
@@ -60,7 +55,6 @@ export class LoginComponent implements OnInit {
     signInWithEmailAndPassword(this.auth, this.email, this.password)
       .then((result) => {
         const user = result.user;
-        console.log('Login successful (Email/Password):', user);
         localStorage.setItem('userToken', 'true');
         this.router.navigate(['/home']);
       })
@@ -82,7 +76,6 @@ export class LoginComponent implements OnInit {
     createUserWithEmailAndPassword(this.auth, this.email, this.password)
       .then((userCredential) => {
         const user = userCredential.user;
-        console.log('Registration successful:', user);
         this.router.navigate(['/']);
       })
       .catch((error) => {

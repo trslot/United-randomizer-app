@@ -230,7 +230,6 @@ export class Season2Component implements OnInit {
                 this.selectedVillains = data['villains'] || [];
                 this.selectedLocations = data['locations'] || [];
               } else {
-                console.log('No saved selections found for user');
               }
             }).catch((error) => {
               console.error('Error fetching user selections:', error);
@@ -239,7 +238,7 @@ export class Season2Component implements OnInit {
 
 
           } else {
-            console.log("No data available");
+
           }
         });
       } else {

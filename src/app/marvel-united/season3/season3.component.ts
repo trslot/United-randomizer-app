@@ -248,7 +248,7 @@ export class Season3Component implements OnInit {
                 this.selectedLocations = data['locations'] || [];
                 this.selectedPets = data['pets'] || [];
               } else {
-                console.log('No saved selections found for user');
+
               }
             }).catch((error) => {
               console.error('Error fetching user selections:', error);
@@ -257,7 +257,7 @@ export class Season3Component implements OnInit {
 
 
           } else {
-            console.log("No data available");
+
           }
         });
       } else {
