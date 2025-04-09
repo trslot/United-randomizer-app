@@ -135,6 +135,14 @@ export class HomeComponent implements OnInit {
 
     // Locations remain unchanged
     this.selectedLocations = this.getRandomItems(this.allLocations, 6);
+
+    // Pets
+    if (this.includePets && this.allPets && this.allPets.length > 0) {
+      const petCount = Math.min(this.allPets.length, this.playerCount);
+      this.selectedPets = this.getRandomItems(this.allPets, petCount);
+    } else {
+      this.selectedPets = [];
+    }
   }
 
   getRandomItems<T>(array: T[], count: number): T[] {

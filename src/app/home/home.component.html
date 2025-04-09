@@ -11,7 +11,7 @@
       <mat-checkbox [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
       <div class="results"
         *ngIf="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
-        <h4>Selected {{ playerCount === 1 ? 'Hero' : 'Heroes' }}</h4>
+        <h4>Selected Hero{{ playerCount === 1 ? '' : 'es' }}</h4>
         <div class="hero-cards">
           @for (hero of selectedHeroes; track $index) {
           <mat-card class="{{hero.type}}-card">
@@ -20,6 +20,20 @@
             </mat-card-title>
             <mat-card-footer class="game-name">
               {{ hero.game }}
+            </mat-card-footer>
+          </mat-card>
+          }
+        </div>
+
+        <h4>Selected Pet{{ playerCount === 1 ? '' : 's' }}</h4>
+        <div class="pet-cards">
+          @for (pet of selectedPets; track $index) {
+          <mat-card class="{{pet.type}}-card">
+            <mat-card-title>
+              {{ pet.name }}
+            </mat-card-title>
+            <mat-card-footer class="game-name">
+              {{ pet.game }}
             </mat-card-footer>
           </mat-card>
           }
@@ -60,4 +74,3 @@
       <button mat-raised-button (click)="randomize()">Randomize</button>
     </mat-card-actions>
   </mat-card>
-</div>

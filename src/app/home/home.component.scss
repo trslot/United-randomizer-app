@@ -39,7 +39,8 @@ ul {
 
 .hero-cards,
 .villain-cards,
-.location-cards {
+.location-cards,
+.pet-cards {
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
@@ -50,22 +51,22 @@ ul {
 
   .hero-card {
     background-color: lightblue;
-    color: black;
   }
 
   .villain-card {
     background-color: pink;
-    color: black;
   }
 
   .location-card {
     background-color: lightgray;
-    color: black;
   }
 
   .anti-hero-card {
     background-color: plum;
-    color: black;
+  }
+
+  .pet-card {
+    background-color: goldenrod;
   }
 }
 
