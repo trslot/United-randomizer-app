@@ -7,15 +7,15 @@ import { Season3Component } from '../marvel-united/season3/season3.component';
 import { Season1DcComponent } from '../dc-super-hero-united/season1-dc/season1-dc.component';
 import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
-import { addDoc, collection, getFirestore, query, where, getDocs, updateDoc } from 'firebase/firestore';
+import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getAuth } from '@firebase/auth';
 
 @Component({
-    selector: 'app-games',
-    standalone: true,
-    imports: [MatTabsModule, MatButtonModule, Season1Component, Season2Component, Season3Component, Season1DcComponent],
-    templateUrl: './games.component.html',
-    styleUrls: ['./games.component.scss']
+  selector: 'app-games',
+  standalone: true,
+  imports: [MatTabsModule, MatButtonModule, Season1Component, Season2Component, Season3Component, Season1DcComponent],
+  templateUrl: './games.component.html',
+  styleUrls: ['./games.component.scss']
 })
 export class GamesComponent {
   @ViewChild(MatTabGroup) tabGroup!: MatTabGroup;
@@ -26,69 +26,69 @@ export class GamesComponent {
   @ViewChild(Season1Component) season1Component!: Season1Component;
   @ViewChild(Season2Component) season2Component!: Season2Component;
   @ViewChild(Season3Component) season3Component!: Season3Component;
+  @ViewChild(Season1DcComponent) seasonDCComponent!: Season1DcComponent;
 
   async saveSelections() {
     try {
       const db = getFirestore();
       const auth = getAuth();
       const user = auth.currentUser;
-      const userId = user ? user.uid : 'anonymous';
+      if (!user) return;
 
+      const userId = user.uid;
+
+      // ---------- Combine all selections ----------
       const combinedHeroes = [
         ...this.season1Component.selectedHeroes,
         ...this.season2Component.selectedHeroes,
-        ...this.season3Component.selectedHeroes
+        ...this.season3Component.selectedHeroes,
+        ...this.seasonDCComponent.selectedHeroes
       ];
-  
+
       const combinedVillains = [
         ...this.season1Component.selectedVillains,
         ...this.season2Component.selectedVillains,
-        ...this.season3Component.selectedVillains
+        ...this.season3Component.selectedVillains,
+        ...this.seasonDCComponent.selectedVillains
       ];
-  
+
       const combinedLocations = [
         ...this.season1Component.selectedLocations,
         ...this.season2Component.selectedLocations,
-        ...this.season3Component.selectedLocations
+        ...this.season3Component.selectedLocations,
+        ...this.seasonDCComponent.selectedLocations
       ];
-  
+
       const combinedAntiHeroes = [
         ...this.season2Component.selectedAntiHeroes,
-        ...this.season3Component.selectedAntiHeroes
+        ...this.season3Component.selectedAntiHeroes,
+        ...this.seasonDCComponent.selectedDualModes
       ];
-  
+
       const combinedPets = [
-        ...this.season3Component.selectedPets
+        ...this.season3Component.selectedPets,
+        ...this.seasonDCComponent.selectedPets
       ];
 
-      const userSelectionsRef = collection(db, 'userSelections');
-      const q = query(userSelectionsRef, where('userId', '==', userId));
-      const querySnapshot = await getDocs(q);
+      // ---------- De-duplication helper ----------
+      const uniqueByKey = <T extends { name: string; game: string; type: string }>(arr: T[]) =>
+        Array.from(
+          new Map(arr.map(item => [`${item.name}|${item.game}|${item.type}`, item])).values()
+        );
 
-      if (!querySnapshot.empty) {
-        const docToUpdate = querySnapshot.docs[0].ref;
-        await updateDoc(docToUpdate, {
-          timestamp: new Date().toISOString(),
-          heroes: combinedHeroes,
-          villains: combinedVillains,
-          locations: combinedLocations,
-          antiHeroes: combinedAntiHeroes,
-          pets: combinedPets
-        });
-        console.log('Selections updated for user:', userId);
-      } else {
-        console.log('No existing document found for user:', userId);
-        await addDoc(userSelectionsRef, {
-          userId: userId,
-          timestamp: new Date().toISOString(),
-          heroes: combinedHeroes,
-          villains: combinedVillains,
-          locations: combinedLocations,
-          antiHeroes: combinedAntiHeroes,
-          pets: combinedPets
-        });
-        console.log('New document created for user:', userId);
-      }
+      const payload = {
+        userId,
+        timestamp: new Date().toISOString(),
+        heroes: uniqueByKey(combinedHeroes),
+        villains: uniqueByKey(combinedVillains),
+        locations: uniqueByKey(combinedLocations),
+        antiHeroes: uniqueByKey(combinedAntiHeroes),
+        pets: uniqueByKey(combinedPets)
+      };
+
+      // ---------- Save (overwrite) ----------
+      const userDocRef = doc(db, 'userSelections', userId);
+      await setDoc(userDocRef, payload);
 
     } catch (error) {
       console.error('Error saving selections:', error);

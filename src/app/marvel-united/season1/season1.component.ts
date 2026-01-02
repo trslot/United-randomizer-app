@@ -2,10 +2,10 @@ import { Component, OnInit, ChangeDetectionStrategy } from '@angular/core';
 import { environment } from '../../Environments/Environment';
 
 import { initializeApp } from "firebase/app";
-import { getDatabase, ref, get, onValue } from "firebase/database";
+import { getDatabase, ref, get } from "firebase/database";
 import { getAuth, onAuthStateChanged } from "firebase/auth";
 import { getDocs, query, where, orderBy, limit } from 'firebase/firestore';
-import { getFirestore, collection, addDoc } from 'firebase/firestore';
+import { getFirestore, collection } from 'firebase/firestore';
 
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatButtonModule } from '@angular/material/button';

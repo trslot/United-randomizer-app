@@ -1,6 +1,103 @@
-<mat-label class="warning">Not all information has been released yet. This will be updated when released</mat-label>
-
 <mat-accordion>
+    <!-- DC Super Heroes United: Batman Hush -->
+    <mat-expansion-panel>
+        <mat-expansion-panel-header>
+            <mat-panel-title class="title">DC Super Heroes United: Batman Hush</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-expansion-panel class="panelHeroes">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushHeroes, selectedHeroes)"
+                              (change)="toggleSelectAll(dcSuperHeroesHushHeroes, selectedHeroes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (hero of dcSuperHeroesHushHeroes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="isHeroSelected(hero)"
+                              (change)="toggleSelection(hero, selectedHeroes)">
+                    {{ hero.name }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelDualModes">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Dual-Heroes</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushDualModes, selectedDualModes)"
+                              (change)="toggleSelectAll(dcSuperHeroesHushDualModes, selectedDualModes)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (dualMode of dcSuperHeroesHushDualModes; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="isDualModeSelected(dualMode)"
+                              (change)="toggleSelection(dualMode, selectedDualModes)">
+                    {{ dualMode.name }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelVillains">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Villains</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushVillains, selectedVillains)"
+                              (change)="toggleSelectAll(dcSuperHeroesHushVillains, selectedVillains)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (villain of dcSuperHeroesHushVillains; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="isVillainSelected(villain)"
+                              (change)="toggleSelection(villain, selectedVillains)">
+                    {{ villain.name }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+
+        <mat-expansion-panel class="panelLocations">
+            <mat-expansion-panel-header>
+                <mat-panel-title>Locations</mat-panel-title>
+            </mat-expansion-panel-header>
+
+            <mat-list-item>
+                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushLocations, selectedLocations)"
+                              (change)="toggleSelectAll(dcSuperHeroesHushLocations, selectedLocations)">
+                    Select All
+                </mat-checkbox>
+            </mat-list-item>
+
+            @for (location of dcSuperHeroesHushLocations; track $index) {
+            <mat-list-item>
+                <mat-checkbox [checked]="isLocationSelected(location)"
+                              (change)="toggleSelection(location, selectedLocations)">
+                    {{ location.name }}
+                </mat-checkbox>
+            </mat-list-item>
+            }
+
+        </mat-expansion-panel>
+    </mat-expansion-panel>
+    <mat-label class="warning">Not all information has been released yet. This will be updated when released</mat-label>
     <!-- DC Super Heroes United -->
     <mat-expansion-panel>
         <mat-expansion-panel-header>
