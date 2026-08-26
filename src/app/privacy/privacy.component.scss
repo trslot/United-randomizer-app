@@ -58,3 +58,13 @@ mat-card-actions {
   justify-content: flex-end;
   gap: 0.5rem;
 }
+
+.policy-section a {
+  color: var(--color-forge-accent-900);
+  font-weight: 600;
+  text-decoration: none;
+
+  &:hover {
+    text-decoration: underline;
+  }
+}
