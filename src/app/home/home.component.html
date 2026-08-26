@@ -1,81 +1,144 @@
-<div class="center-content">
-  <mat-card>
-    <mat-card-title>Create a game</mat-card-title>
+<div class="home-container">
+  <mat-card class="game-card">
+    <!-- Header -->
+    <mat-card-header class="game-header">
+      <mat-card-title>Create a Game</mat-card-title>
+      <mat-card-subtitle>Randomize your Marvel United game</mat-card-subtitle>
+    </mat-card-header>
+
     <mat-card-content>
-      <div class="controls-row">
-        <mat-form-field appearance="fill">
+      <!-- Controls -->
+      <div class="controls-row"
+        [class.has-results]="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
+        <mat-form-field appearance="outline">
           <mat-label>Number of Players</mat-label>
-          <mat-select matNativeControl [(ngModel)]="playerCount">
-            <mat-option *ngFor="let num of [1,2,3,4]" [value]="num">{{ num }}</mat-option>
+          <mat-select [(ngModel)]="playerCount">
+            <mat-option *ngFor="let num of [1, 2, 3, 4]" [value]="num">
+              {{ num }}
+            </mat-option>
           </mat-select>
         </mat-form-field>
-        <button mat-raised-button (click)="randomize()">Randomize</button>
+
+        @if (allPets.length > 0) {
+        <div class="pets-option">
+          <div class="pets-option-info">
+            <div class="pets-icon">
+              <span class="material-icons">pets</span>
+            </div>
+
+            <div>
+              <div class="pets-title">Include Pets</div>
+              <div class="pets-description">
+                Add pets to your random game when available.
+              </div>
+            </div>
+          </div>
+
+          <mat-slide-toggle [(ngModel)]="includePets" (change)="onIncludePetsChange($event)" aria-label="Include Pets">
+          </mat-slide-toggle>
+        </div>
+        }
+
+        <button mat-raised-button class="randomize-button" (click)="randomize()">
+          <span class="material-icons">shuffle</span>
+          Randomize
+        </button>
       </div>
-      @if (allPets.length > 0) {
-        <mat-checkbox [(ngModel)]="includePets" (change)="onIncludePetsChange($event)">Include Pets</mat-checkbox>
-      }
-        
+
+      <!-- Results -->
       <div class="results"
         *ngIf="selectedHeroes.length > 0 || selectedVillain.length > 0 || selectedLocations.length > 0">
-        <h4>Selected Hero{{ playerCount === 1 ? '' : 'es' }}</h4>
-        <div class="hero-cards" [ngClass]="{'four-heroes': selectedHeroes.length === 4}">
-          @for (hero of selectedHeroes; track $index) {
-          <mat-card class="{{hero.type}}-card">
-            <mat-card-title>
-              {{ hero.name }}
-            </mat-card-title>
-            <mat-card-footer class="game-name">
-              {{ hero.game }}
-            </mat-card-footer>
-          </mat-card>
-          }
-        </div>
+        <!-- ============================== -->
+        <!-- HEROES -->
+        <!-- ============================== -->
 
-        <div *ngIf="includePets && selectedPets.length > 0">
-          <h4>Selected Pet{{ playerCount === 1 ? '' : 's' }}</h4>
-          <div class="pet-cards">
-            @for (pet of selectedPets; track $index) {
-            <mat-card class="{{pet.type}}-card">
-              <mat-card-title>
-                {{ pet.name }}
-              </mat-card-title>
-              <mat-card-footer class="game-name">
-                {{ pet.game }}
-              </mat-card-footer>
+        <section class="result-section">
+          <div class="section-heading">
+            <span class="material-icons hero-heading-icon">shield</span>
+            <h3>Selected Hero{{ playerCount === 1 ? '' : 'es' }}</h3>
+          </div>
+
+          <div class="hero-cards" [ngClass]="{ 'four-heroes': selectedHeroes.length === 4 }">
+            @for (hero of selectedHeroes; track $index) {
+            <mat-card class="{{ hero.type }}-card result-card">
+              <mat-card-content>
+                <div class="piece-name">{{ hero.name }}</div>
+                <div class="game-name">{{ hero.game }}</div>
+              </mat-card-content>
             </mat-card>
             }
           </div>
-        </div>
+        </section>
 
-        <h4>Selected Villain</h4>
-        <div class="villain-cards">
-          @for (villain of selectedVillain; track $index) {
-          <mat-card class="{{villain.type}}-card">
-            <mat-card-title>
-              {{ villain.name }}
-            </mat-card-title>
-            <mat-card-footer class="game-name">
-              {{ villain.game }}
-            </mat-card-footer>
-          </mat-card>
-          }
-        </div>
+        <!-- ============================== -->
+        <!-- PETS -->
+        <!-- ============================== -->
 
+        <section class="result-section" *ngIf="includePets && selectedPets.length > 0">
+          <div class="section-heading">
+            <span class="material-icons pet-heading-icon">pets</span>
+            <h3>Selected Pet{{ playerCount === 1 ? '' : 's' }}</h3>
+          </div>
 
-        <h4>Selected Locations</h4>
-        <div class="location-cards">
-          @for (location of selectedLocations; track $index) {
-          <mat-card class="location-card">
-            <mat-card-title>
-              {{ location.name }}
-            </mat-card-title>
-            <mat-card-footer class="game-name">
-              {{ location.game }}
-            </mat-card-footer>
-          </mat-card>
-          }
-        </div>
+          <div class="pet-cards">
+            @for (pet of selectedPets; track $index) {
+            <mat-card class="{{ pet.type }}-card result-card">
+              <mat-card-content>
+                <div class="piece-name">{{ pet.name }}</div>
+                <div class="game-name">{{ pet.game }}</div>
+              </mat-card-content>
+            </mat-card>
+            }
+          </div>
+        </section>
 
+        <!-- ============================== -->
+        <!-- VILLAIN -->
+        <!-- ============================== -->
+
+        <section class="result-section">
+          <div class="section-heading">
+            <span class="material-icons villain-heading-icon">whatshot</span>
+            <h3>Selected Villain</h3>
+          </div>
+
+          <div class="villain-cards">
+            @for (villain of selectedVillain; track $index) {
+            <mat-card class="{{ villain.type }}-card result-card">
+              <mat-card-content>
+                <div class="piece-name">{{ villain.name }}</div>
+                <div class="game-name">{{ villain.game }}</div>
+              </mat-card-content>
+            </mat-card>
+            }
+          </div>
+        </section>
+
+        <!-- ============================== -->
+        <!-- LOCATIONS -->
+        <!-- ============================== -->
+
+        <section class="result-section locations-section">
+          <div class="section-heading">
+            <span class="material-icons location-heading-icon">place</span>
+            <h3>Selected Locations</h3>
+          </div>
+
+          <div class="location-grid">
+            @for (location of selectedLocations; track $index) {
+            <mat-card class="location-card result-card">
+              <mat-card-content>
+                <div class="location-number">{{ $index + 1 }}</div>
+                <div class="location-info">
+                  <div class="piece-name">{{ location.name }}</div>
+                  <div class="game-name">{{ location.game }}</div>
+                </div>
+              </mat-card-content>
+            </mat-card>
+            }
+          </div>
+        </section>
       </div>
     </mat-card-content>
   </mat-card>
+</div>

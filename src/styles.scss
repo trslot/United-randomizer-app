@@ -1,15 +1,190 @@
-body {
-  font-family: 'Roboto', sans-serif;
+/* ========================================
+   United Forge — Central Color System
+   ======================================== */
+
+:root {
+  /* ----- Brand / Forge ----- */
+  --color-forge-950: #12151c;
+  --color-forge-900: #1a1e27;
+  --color-forge-800: #252b36;
+  --color-forge-700: #343b48;
+  --color-forge-600: #46505f;
+  --color-forge-500: #5d6878;
+  --color-forge-400: #737f8f;
+  --color-forge-300: #8a96a6;
+  --color-forge-200: #a4afbd;
+  --color-forge-100: #c4ccd5;
+
+  /* ----- Forge Accent ----- */
+
+  --color-forge-accent-900: #8c4f16;
+  --color-forge-accent-700: #c47722;
+  --color-forge-accent-500: #e09a3b;
+
+  --color-forge-gradient: linear-gradient(135deg,
+      var(--color-forge-accent-900),
+      var(--color-forge-accent-700),
+      var(--color-forge-accent-500));
+
+  /* ----- Neutrals / Surfaces ----- */
+  --color-bg-page: #f1f3f6;
+  --color-bg-soft: #f7f8fa;
+  --color-bg-tint: #eef8ff;
+  --color-bg-info: #f3f6f9;
+
+  --color-border: #dfe3e8;
+  --color-border-strong: #c9ced6;
+
+  --color-text-strong: #171a20;
+  --color-text: #303640;
+  --color-text-muted: #68717d;
+  --color-text-faint: rgba(0, 0, 0, 0.6);
+
+  --color-on-primary: #ffffff;
+
+  /* ----- Semantic ----- */
+  --color-success-700: #2e7d32;
+  --color-success-50: #e8f5e9;
+
+  --color-error-700: #c62828;
+  --color-error-600: #d32f2f;
+  --color-error-50: #ffebee;
+  --color-error-soft: #fff7f7;
+
+  /* ----- Hero (blue) ----- */
+  --color-hero-700: #1976d2;
+  --color-hero-600: #1565c0;
+  --color-hero-100: #e3f2fd;
+  --color-hero-200: #bbdefb;
+  --color-hero-50: #f5faff;
+
+  /* ----- Villain (red) ----- */
+  --color-villain-700: #d32f2f;
+  --color-villain-600: #c62828;
+  --color-villain-100: #ffebee;
+  --color-villain-200: #ffcdd2;
+  --color-villain-50: #fff7f7;
+
+  /* ----- Anti-Hero (purple) ----- */
+  --color-antihero-700: #8e24aa;
+  --color-antihero-100: #f3e5f5;
+  --color-antihero-200: #e1bee7;
+
+  /* ----- Pet (gold) ----- */
+  --color-pet-700: #b8860b;
+  --color-pet-100: #fff8e1;
+  --color-pet-200: #ffe082;
+
+  /* ----- Location (gray) ----- */
+  --color-location-700: #616161;
+  --color-location-600: #424242;
+  --color-location-100: #f5f5f5;
+  --color-location-200: #fafafa;
+  --color-location-card-1: #fafafa;
+  --color-location-card-2: #eeeeee;
+
+  /* ----- Brand-specific / Google ----- */
+  --color-google: #4285f4;
+
+  /* ----- Shadows ----- */
+  --shadow-sm: 0 2px 5px rgba(0, 0, 0, 0.06);
+  --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.10);
+  --shadow-lg: 0 8px 24px rgba(0, 0, 0, 0.12);
+  --shadow-forge: 0 6px 20px rgba(37, 135, 196, 0.18);
 }
 
+/* ========================================
+   Base Styles
+   ======================================== */
 
-.mat-icon[ng-reflect-svg-icon="google"] {
+body {
+  min-height: 100vh;
+  margin: 0;
+  font-family: 'Roboto', sans-serif;
+  color: var(--color-text);
+  background:
+    radial-gradient(circle at top,
+      #eaf4fc 0%,
+      var(--color-bg-page) 45%);
+}
+
+/* ========================================
+   Google Icon
+   ======================================== */
+
+.mat-icon[ng-reflect-svg-icon='google'] {
   width: 40px;
   height: 40px;
   font-size: 40px;
+  cursor: pointer;
 }
 
+/* ========================================
+   United Forge — Global Material Forms
+   ======================================== */
 
-.mat-icon[ng-reflect-svg-icon="google"]:hover {
-  cursor: pointer;
+.mat-mdc-form-field.mat-focused {
+  --mdc-outlined-text-field-focus-outline-color: var(--color-forge-accent-900);
+  --mdc-outlined-text-field-focus-label-text-color: var(--color-forge-accent-900);
+  --mdc-outlined-text-field-caret-color: var(--color-forge-accent-900);
+}
+
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__leading,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__notch,
+.mat-mdc-form-field.mat-focused .mdc-notched-outline__trailing {
+  border-color: var(--color-forge-accent-900) !important;
+}
+
+.mat-mdc-form-field.mat-focused .mat-mdc-floating-label {
+  color: var(--color-forge-accent-900) !important;
+}
+
+/* ========================================
+   United Forge — Form Field Focus
+   ======================================== */
+
+.mat-mdc-form-field.player-select {
+  --mdc-outlined-text-field-focus-outline-color: var(--color-forge-accent-900);
+  --mdc-outlined-text-field-focus-label-text-color: var(--color-forge-accent-900);
+  --mdc-outlined-text-field-caret-color: var(--color-forge-accent-900);
+}
+
+/* Force the outline to Forge bronze */
+.mat-mdc-form-field.player-select.mat-focused {
+
+  .mdc-notched-outline__leading,
+  .mdc-notched-outline__notch,
+  .mdc-notched-outline__trailing {
+    border-color: var(--color-forge-accent-900) !important;
+  }
+
+  .mat-mdc-floating-label {
+    color: var(--color-forge-accent-900) !important;
+  }
+
+  .mat-mdc-select-arrow {
+    color: var(--color-forge-accent-900) !important;
+  }
+}
+
+/* ========================================
+   Angular Material Select Panel
+   ======================================== */
+
+.mat-mdc-select-panel {
+  --mat-option-selected-state-label-text-color: var(--color-forge-accent-900);
+  --mat-option-selected-state-label-text-color: var(--color-forge-accent-900);
+}
+
+.mat-mdc-option:hover:not(.mdc-list-item--disabled) {
+  background-color: rgba(196, 119, 34, 0.08);
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) {
+  background-color: rgba(196, 119, 34, 0.12);
+}
+
+.mat-mdc-option.mdc-list-item--selected:not(.mdc-list-item--disabled) .mdc-list-item__primary-text {
+  color: var(--color-forge-accent-900);
+  font-weight: 600;
 }

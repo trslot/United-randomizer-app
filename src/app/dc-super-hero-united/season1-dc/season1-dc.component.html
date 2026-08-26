@@ -1,443 +1,488 @@
-<mat-accordion>
+<div class="collection-container">
+  <mat-accordion class="collection-accordion">
+
     <!-- DC Super Heroes United: Batman Hush -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">DC Super Heroes United: Batman Hush</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">DC Super Heroes United: Batman Hush</mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes</mat-panel-title>
-            </mat-expansion-panel-header>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesHushHeroes, selectedHeroes)"
+            (change)="toggleSelectAll(dcSuperHeroesHushHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
 
-            <mat-list-item>
-                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushHeroes, selectedHeroes)"
-                              (change)="toggleSelectAll(dcSuperHeroesHushHeroes, selectedHeroes)">
-                    Select All
-                </mat-checkbox>
-            </mat-list-item>
+        @for (hero of dcSuperHeroesHushHeroes; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
 
-            @for (hero of dcSuperHeroesHushHeroes; track $index) {
-            <mat-list-item>
-                <mat-checkbox [checked]="isHeroSelected(hero)"
-                              (change)="toggleSelection(hero, selectedHeroes)">
-                    {{ hero.name }}
-                </mat-checkbox>
-            </mat-list-item>
-            }
+      </mat-expansion-panel>
 
-        </mat-expansion-panel>
+      <mat-expansion-panel class="panelDualModes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dual-Heroes</mat-panel-title>
+        </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Dual-Heroes</mat-panel-title>
-            </mat-expansion-panel-header>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesHushDualModes, selectedDualModes)"
+            (change)="toggleSelectAll(dcSuperHeroesHushDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
 
-            <mat-list-item>
-                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushDualModes, selectedDualModes)"
-                              (change)="toggleSelectAll(dcSuperHeroesHushDualModes, selectedDualModes)">
-                    Select All
-                </mat-checkbox>
-            </mat-list-item>
+        @for (dualMode of dcSuperHeroesHushDualModes; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
 
-            @for (dualMode of dcSuperHeroesHushDualModes; track $index) {
-            <mat-list-item>
-                <mat-checkbox [checked]="isDualModeSelected(dualMode)"
-                              (change)="toggleSelection(dualMode, selectedDualModes)">
-                    {{ dualMode.name }}
-                </mat-checkbox>
-            </mat-list-item>
-            }
+      </mat-expansion-panel>
 
-        </mat-expansion-panel>
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains</mat-panel-title>
-            </mat-expansion-panel-header>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesHushVillains, selectedVillains)"
+            (change)="toggleSelectAll(dcSuperHeroesHushVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
 
-            <mat-list-item>
-                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushVillains, selectedVillains)"
-                              (change)="toggleSelectAll(dcSuperHeroesHushVillains, selectedVillains)">
-                    Select All
-                </mat-checkbox>
-            </mat-list-item>
+        @for (villain of dcSuperHeroesHushVillains; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
 
-            @for (villain of dcSuperHeroesHushVillains; track $index) {
-            <mat-list-item>
-                <mat-checkbox [checked]="isVillainSelected(villain)"
-                              (change)="toggleSelection(villain, selectedVillains)">
-                    {{ villain.name }}
-                </mat-checkbox>
-            </mat-list-item>
-            }
+      </mat-expansion-panel>
 
-        </mat-expansion-panel>
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Locations</mat-panel-title>
+        </mat-expansion-panel-header>
 
-        <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Locations</mat-panel-title>
-            </mat-expansion-panel-header>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesHushLocations, selectedLocations)"
+            (change)="toggleSelectAll(dcSuperHeroesHushLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
 
-            <mat-list-item>
-                <mat-checkbox [checked]="isAllSelected(dcSuperHeroesHushLocations, selectedLocations)"
-                              (change)="toggleSelectAll(dcSuperHeroesHushLocations, selectedLocations)">
-                    Select All
-                </mat-checkbox>
-            </mat-list-item>
+        @for (location of dcSuperHeroesHushLocations; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
 
-            @for (location of dcSuperHeroesHushLocations; track $index) {
-            <mat-list-item>
-                <mat-checkbox [checked]="isLocationSelected(location)"
-                              (change)="toggleSelection(location, selectedLocations)">
-                    {{ location.name }}
-                </mat-checkbox>
-            </mat-list-item>
-            }
-
-        </mat-expansion-panel>
+      </mat-expansion-panel>
     </mat-expansion-panel>
+
     <mat-label class="warning">Not all information has been released yet. This will be updated when released</mat-label>
+
     <!-- DC Super Heroes United -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">DC Super Heroes United</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">DC Super Heroes United </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of dcSuperHeroesHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of dcSuperHeroesVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <!-- <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Locations </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (location of dcSuperHeroesLocations; track $index) {
-            <mat-list-item>{{location.name}}</mat-list-item>
-            }
-        </mat-expansion-panel> -->
+
+        @for (hero of dcSuperHeroesHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of dcSuperHeroesVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Arkham Asylum Breakout -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Arkham Asylum Breakout</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Arkham Asylum Breakout </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of arkhamAsylumBreakoutHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of arkhamAsylumBreakoutVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <!-- <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Locations </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (location of arkhamAsylumBreakoutLocations; track $index) {
-            <mat-list-item>{{location.name}}</mat-list-item>
-            }
-        </mat-expansion-panel> -->
+
+        @for (hero of arkhamAsylumBreakoutHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of arkhamAsylumBreakoutVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Gotham City -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Gotham City</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Gotham City </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of gothamCityHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Dual-Modes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of gothamCityDualModes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of gothamCityVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <!-- <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Locations </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (location of gothamCityLocations; track $index) {
-            <mat-list-item>{{location.name}}</mat-list-item>
-            }
-        </mat-expansion-panel> -->
-        <mat-expansion-panel class="panelSupports">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Supports </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (support of gothamCitySupports; track $index) {
-            <mat-list-item>{{support.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of gothamCityHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelDualModes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dual-Modes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (hero of gothamCityDualModes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of gothamCityVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelSupports">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Supports</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (support of gothamCitySupports; track $index) {
+          <mat-list-item>{{ support.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Green Lantern Corps -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Green Lantern Corps</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Green Lantern Corps </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of greenLaternCorpsHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of greenLaternCorpsHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Justice Society of America -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Justice Society of America</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Justice Society of America </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of jsaHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Dual-Modes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (dualMode of jsaDualModes; track $index) {
-            <mat-list-item>{{dualMode.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of jsaHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelDualModes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dual-Modes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (dualMode of jsaDualModes; track $index) {
+          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Metropolis -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Metropolis</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Metropolis </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of metropolisHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of metropolisVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Locations </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (location of metropolisLocations; track $index) {
-            <mat-list-item>{{location.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelSupports">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Supports </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (support of metropolisSupports; track $index) {
-            <mat-list-item>{{support.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of metropolisHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of metropolisVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Locations</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (location of metropolisLocations; track $index) {
+          <mat-list-item>{{ location.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelSupports">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Supports</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (support of metropolisSupports; track $index) {
+          <mat-list-item>{{ support.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Sidekicks -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Sidekicks</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelPets">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Sidekicks </mat-panel-title>
+          <mat-panel-title>Sidekicks</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelPets">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Sidekicks </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (sidekick of sidekicks; track $index) {
-            <mat-list-item>{{sidekick.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (sidekick of sidekicks; track $index) {
+          <mat-list-item>{{ sidekick.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Suicide Squad -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Suicide Squad</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelDualModes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Suicide Squad </mat-panel-title>
+          <mat-panel-title>Dual-Modes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Dual-Modes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (dualMode of suicideSquadDualModes; track $index) {
-            <mat-list-item>{{dualMode.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (dualMode of suicideSquadDualModes; track $index) {
+          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- Teen Titans -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">Teen Titans</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">Teen Titans </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of teenTitansHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villains of teenTitansVillains; track $index) {
-            <mat-list-item>{{villains.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of teenTitansHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villains of teenTitansVillains; track $index) {
+          <mat-list-item>{{ villains.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- War of Light -->
     <mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">War of Light</mat-panel-title>
+      </mat-expansion-panel-header>
+
+      <mat-expansion-panel class="panelHeroes">
         <mat-expansion-panel-header>
-            <mat-panel-title class="title">War of Light </mat-panel-title>
+          <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of warOfLightHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Dual Modes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (dualMode of warOfLightDualModes; track $index) {
-            <mat-list-item>{{dualMode.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villains of warOfLightVillains; track $index) {
-            <mat-list-item>{{villains.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+
+        @for (hero of warOfLightHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelDualModes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Dual Modes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (dualMode of warOfLightDualModes; track $index) {
+          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villains of warOfLightVillains; track $index) {
+          <mat-list-item>{{ villains.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
 
     <!-- DC Super Heroes United Pledge Bonuses and Stretch Goals -->
     <mat-expansion-panel>
-        <mat-expansion-panel-header>
-            <mat-panel-title class="title">DC Super Heroes United Pledge Bonuses and Stretch Goals</mat-panel-title>
-        </mat-expansion-panel-header>
-        <!-- DC Super Heroes United Pledge Bonus -->
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Pledge Bonus Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of pledgeBonusHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Pledge Bonus Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of pledgeBonusVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelSupports">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Pledge Bonus Supports </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (support of pledgeBonusSupports; track $index) {
-            <mat-list-item>{{support.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+      <mat-expansion-panel-header>
+        <mat-panel-title class="title">DC Super Heroes United Pledge Bonuses and Stretch Goals</mat-panel-title>
+      </mat-expansion-panel-header>
 
-        <!-- DC Super Heroes United Stretch Goals -->
-        <mat-expansion-panel class="panelHeroes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Stretch Goals Heroes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (hero of stretchGoalsHeroes; track $index) {
-            <mat-list-item>{{hero.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelDualModes">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Stretch Goals Dual Modes </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (dualMode of stretchGoalsDualModes; track $index) {
-            <mat-list-item>{{dualMode.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelVillains">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Stretch Goals Villains </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (villain of stretchGoalsVillains; track $index) {
-            <mat-list-item>{{villain.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
-        <mat-expansion-panel class="panelLocations">
-            <mat-expansion-panel-header>
-                <mat-panel-title>Stretch Goals Locations </mat-panel-title>
-            </mat-expansion-panel-header>
-            @for (location of stretchGoalsLocations; track $index) {
-            <mat-list-item>{{location.name}}</mat-list-item>
-            }
-        </mat-expansion-panel>
+      <mat-expansion-panel class="panelHeroes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Pledge Bonus Heroes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (hero of pledgeBonusHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Pledge Bonus Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of pledgeBonusVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelSupports">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Pledge Bonus Supports</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (support of pledgeBonusSupports; track $index) {
+          <mat-list-item>{{ support.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelHeroes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stretch Goals Heroes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (hero of stretchGoalsHeroes; track $index) {
+          <mat-list-item>{{ hero.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelDualModes">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stretch Goals Dual Modes</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (dualMode of stretchGoalsDualModes; track $index) {
+          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelVillains">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stretch Goals Villains</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (villain of stretchGoalsVillains; track $index) {
+          <mat-list-item>{{ villain.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Stretch Goals Locations</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        @for (location of stretchGoalsLocations; track $index) {
+          <mat-list-item>{{ location.name }}</mat-list-item>
+        }
+      </mat-expansion-panel>
     </mat-expansion-panel>
-</mat-accordion>
+
+  </mat-accordion>
+</div>
 
 <!-- <mat-expansion-panel>
-    <mat-expansion-panel-header>
-        <mat-panel-title class="title"></mat-panel-title>
-    </mat-expansion-panel-header>
+  <mat-expansion-panel-header>
+    <mat-panel-title class="title"></mat-panel-title>
+  </mat-expansion-panel-header>
 
 </mat-expansion-panel> -->

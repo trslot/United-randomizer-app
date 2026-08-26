@@ -9,11 +9,12 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { MatButtonModule } from '@angular/material/button';
 import { getFirestore, doc, setDoc } from 'firebase/firestore';
 import { getAuth } from '@firebase/auth';
+import { MatCardModule } from '@angular/material/card';
 
 @Component({
   selector: 'app-games',
   standalone: true,
-  imports: [MatTabsModule, MatButtonModule, Season1Component, Season2Component, Season3Component, Season1DcComponent],
+  imports: [MatCardModule, MatTabsModule, MatButtonModule, Season1Component, Season2Component, Season3Component, Season1DcComponent],
   templateUrl: './games.component.html',
   styleUrls: ['./games.component.scss']
 })
@@ -27,6 +28,8 @@ export class GamesComponent {
   @ViewChild(Season2Component) season2Component!: Season2Component;
   @ViewChild(Season3Component) season3Component!: Season3Component;
   @ViewChild(Season1DcComponent) seasonDCComponent!: Season1DcComponent;
+  saveMessage = '';
+  saveSuccess = false;
 
   async saveSelections() {
     try {
@@ -90,8 +93,14 @@ export class GamesComponent {
       const userDocRef = doc(db, 'userSelections', userId);
       await setDoc(userDocRef, payload);
 
+      this.saveSuccess = true;
+      this.saveMessage = 'Game selections saved successfully.';
+
     } catch (error) {
-      console.error('Error saving selections:', error);
+      console.error('Error saving game selections:', error);
+
+      this.saveSuccess = false;
+      this.saveMessage = 'Unable to save game selections. Please try again.';
     }
   }
 

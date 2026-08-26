@@ -4,10 +4,12 @@ import { LoginComponent } from './login/login.component';
 import { AccountComponent } from './account/account.component';
 import { AuthGuard } from './auth.guard';
 import { GamesComponent } from './games/games.component';
+import { PrivacyComponent } from './privacy/privacy.component';
 
 export const routes: Routes = [
     { path: '', component: LoginComponent },
     { path: 'home', component: HomeComponent, canActivate: [AuthGuard] },
     { path: 'account', component: AccountComponent, canActivate: [AuthGuard] },
     { path: 'games', component: GamesComponent, canActivate: [AuthGuard] },
+    { path: 'privacy', component: PrivacyComponent }
 ];

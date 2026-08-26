@@ -1,28 +1,416 @@
-.swipe-container {
-  touch-action: pan-y; /* Allow vertical scroll, capture horizontal swipe */
-  display: block; /* Ensure it's a block element */
+// ========================================
+// United Forge — Games
+// ========================================
+
+.games-container {
+  min-height: calc(100vh - 64px);
+
+  padding: 30px 16px 100px;
+
+  box-sizing: border-box;
 }
 
+// ========================================
+// Page Header
+// ========================================
 
-/* Styles for GamesComponent */
 .account-header {
+  max-width: 1100px;
+
+  margin: 0 auto 22px;
+
+  padding: 20px 24px;
+
   display: flex;
-  justify-content: center;
   align-items: center;
-  margin-bottom: 15px;
+
+  gap: 16px;
+
+  box-sizing: border-box;
+
+  border-radius: 14px;
+
+background: linear-gradient(135deg, var(--color-forge-950), var(--color-forge-700), var(--color-forge-950));
+
+  border: 1px solid var(--color-forge-600);
+
+  box-shadow:
+    0 8px 20px rgba(0, 0, 0, 0.25);
+
+  color: white;
+
+  position: relative;
+
+  overflow: hidden;
+
+  // Forge accent line
+  &::after {
+    content: '';
+
+    position: absolute;
+
+    left: 24px;
+    right: 24px;
+    bottom: 0;
+
+    height: 2px;
+
+    background: linear-gradient(
+      90deg,
+      transparent,
+      var(--color-forge-accent-300),
+      var(--color-forge-accent-400),
+      var(--color-forge-accent-300),
+      transparent
+    );
+  }
 }
+
+// ========================================
+// Header Icon
+// ========================================
+
+.header-icon {
+  width: 48px;
+  height: 48px;
+
+  flex-shrink: 0;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  background:
+    linear-gradient(
+      135deg,
+      var(--color-forge-accent-700),
+      var(--color-forge-accent-500)
+    );
+
+  color: white;
+
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.2),
+    0 4px 10px rgba(0, 0, 0, 0.25);
+
+  .material-icons {
+    font-size: 26px;
+  }
+}
+
+// ========================================
+// Header Text
+// ========================================
+
+.header-text {
+  min-width: 0;
+
+  h2 {
+    margin: 0;
+
+    font-size: 24px;
+    font-weight: 600;
+
+    letter-spacing: 0.2px;
+  }
+
+  p {
+    margin: 4px 0 0;
+
+    color: rgba(255, 255, 255, 0.7);
+
+    font-size: 13px;
+    line-height: 1.4;
+  }
+}
+
+// ========================================
+// Games Card
+// ========================================
+
+.games-card {
+  width: 100%;
+  max-width: 1100px;
+
+  margin: 0 auto;
+
+  padding: 0;
+
+  overflow: hidden;
+
+  border-radius: 16px;
+
+  background: #ffffff;
+
+  border: 1px solid var(--color-forge-600);
+
+  box-shadow:
+    0 12px 30px rgba(0, 0, 0, 0.3),
+    0 3px 8px rgba(0, 0, 0, 0.18);
+}
+
+// ========================================
+// Game Tabs
+// ========================================
+
+.game-tabs {
+
+  // Tab label text
+  ::ng-deep .mdc-tab__text-label {
+    color: var(--color-forge-700);
+    font-weight: 500;
+  }
+
+  // Active tab label
+  ::ng-deep .mdc-tab--active .mdc-tab__text-label {
+    color: var(--color-forge-accent-700);
+    font-weight: 600;
+  }
+
+  // Active tab indicator
+  ::ng-deep .mdc-tab-indicator__content--underline {
+    border-color: var(--color-forge-accent-700);
+  }
+
+  // Hover
+  ::ng-deep .mdc-tab:hover .mdc-tab__text-label {
+    color: var(--color-forge-accent-500);
+  }
+}
+
+// ========================================
+// Tab Content
+// ========================================
+
+.tab-content {
+  padding: 24px;
+
+  min-height: 400px;
+
+  box-sizing: border-box;
+
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #fafafa 100%
+    );
+}
+
+// ========================================
+// Save Button
+// ========================================
 
 .save-button-container {
   position: fixed;
-  bottom: 20px;
-  right: 20px;
+  right: 24px;
+  bottom: 24px;
   z-index: 1000;
+
+  display: flex;
+  align-items: center;
+  gap: 16px;
 }
 
-@media (min-width: 600px) {
-  .center-content {
-    margin: 0 auto;
-    max-width: 80%;
+.save-message {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+
+  padding: 10px 14px;
+  border-radius: 8px;
+
+  background: var(--color-bg-page);
+
+  font-size: 14px;
+  font-weight: 500;
+
+  box-shadow: var(--shadow-md);
+
+  .material-icons {
+    font-size: 19px;
+  }
+}
+
+.success-message {
+  color: var(--color-success-700);
+}
+
+.error-message {
+  color: var(--color-error-700);
+}
+
+.save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 0 20px;
+
+  background: var(--color-forge-gradient);
+  color: var(--color-on-primary);
+
+  font-weight: 600;
+  border-radius: 9px;
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+// ========================================
+// Tablet
+// ========================================
+
+@media (max-width: 800px) {
+  .games-container {
+    padding: 20px 10px 90px;
+  }
+
+  .account-header {
+    margin-bottom: 16px;
+  }
+
+  .tab-content {
+    padding: 18px;
+  }
+
+  .game-tabs {
+    ::ng-deep .mdc-tab__text-label {
+      font-size: 13px;
+    }
+  }
+}
+
+// ========================================
+// Mobile
+// ========================================
+
+@media (max-width: 599px) {
+  .games-container {
+    padding: 12px 6px 90px;
+  }
+
+  // Header
+
+  .account-header {
+    padding: 16px;
+
+    gap: 12px;
+
+    border-radius: 12px;
+
+    &::after {
+      left: 16px;
+      right: 16px;
+    }
+  }
+
+  .header-icon {
+    width: 42px;
+    height: 42px;
+
+    .material-icons {
+      font-size: 23px;
+    }
+  }
+
+  .header-text {
+    h2 {
+      font-size: 20px;
+    }
+
+    p {
+      font-size: 12px;
+    }
+  }
+
+  // Card
+
+  .games-card {
+    border-radius: 12px;
+  }
+
+  // Tabs
+
+  .game-tabs {
+    ::ng-deep .mat-mdc-tab-header {
+      overflow-x: auto;
+    }
+
+    ::ng-deep .mat-mdc-tab {
+      min-width: max-content;
+
+      padding: 0 14px;
+    }
+
+    ::ng-deep .mdc-tab__text-label {
+      font-size: 12px;
+    }
+  }
+
+  // Content
+
+  .tab-content {
+    padding: 12px;
+  }
+
+  // Save
+
+  .save-button-container {
+    position: static;
+
+    flex-direction: column;
+    align-items: stretch;
+
+    margin-top: 20px;
+    padding: 0 16px 20px;
+  }
+
+  .save-message {
+    justify-content: center;
+  }
+
+  .save-button {
     width: 100%;
+  }
+}
+
+// ========================================
+// Very Small Phones
+// ========================================
+
+@media (max-width: 380px) {
+  .account-header {
+    .header-icon {
+      display: none;
+    }
+
+    .header-text {
+      text-align: center;
+      width: 100%;
+    }
+  }
+
+  .tab-content {
+    padding: 8px;
   }
 }

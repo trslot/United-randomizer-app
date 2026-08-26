@@ -1,0 +1,694 @@
+// ==============================
+// Account Layout
+// ==============================
+
+.account-page {
+  width: 100%;
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 24px 16px 40px;
+
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 24px;
+
+  box-sizing: border-box;
+}
+
+.account-container {
+  display: flex;
+  min-width: 0;
+}
+
+.account-card {
+  width: 100%;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: var(--shadow-md);
+}
+
+// ==============================
+// Desktop Card Heights
+// ==============================
+
+@media (min-width: 900px) {
+  .account-card {
+    height: 100%;
+    box-sizing: border-box;
+  }
+}
+
+
+// ==============================
+// Icons
+// ==============================
+
+.account-icon,
+.security-icon,
+.preferences-icon,
+.collection-icon,
+.privacy-icon,
+.about-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background:
+    linear-gradient(135deg,
+      var(--color-forge-accent-700),
+      var(--color-forge-accent-500));
+
+  color: white;
+
+  .material-icons {
+    font-size: 24px;
+  }
+}
+
+.google-security-icon {
+  background-color: var(--color-google);
+}
+
+
+// ==============================
+// Account Information
+// ==============================
+
+.account-info {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  margin-top: 20px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-bg-soft);
+}
+
+.info-label {
+  font-size: 13px;
+  font-weight: 500;
+  color: var(--color-text-muted);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.info-value {
+  font-size: 16px;
+  color: var(--color-text-strong);
+  word-break: break-word;
+}
+
+// ========================================
+// Forge Preferences
+// ========================================
+
+.preferences-card {
+  overflow: hidden;
+}
+
+.preferences-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  // background: var(--color-forge-800);
+  // color: var(--color-forge-accent-500);
+
+  .material-icons {
+    font-size: 22px;
+  }
+}
+
+.preference-section {
+  padding-top: 4px;
+}
+
+.preference-row {
+  min-height: 90px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  gap: 24px;
+  padding: 18px 0;
+}
+
+.preference-info {
+  display: flex;
+  align-items: center;
+
+  gap: 14px;
+
+  min-width: 0;
+}
+
+.preference-icon {
+  flex-shrink: 0;
+
+  width: 42px;
+  height: 42px;
+
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  border-radius: 10px;
+
+  // background: var(--color-forge-900);
+  // color: var(--color-forge-accent-500);
+
+  .material-icons {
+    font-size: 21px;
+  }
+}
+
+.preference-info h3 {
+  margin: 0 0 4px;
+
+  color: var(--color-text-strong);
+
+  font-size: 16px;
+  font-weight: 600;
+}
+
+.preference-info p {
+  margin: 0;
+
+  color: var(--color-text-muted);
+
+  font-size: 13px;
+  line-height: 1.4;
+}
+
+.player-select {
+  flex-shrink: 0;
+  width: 145px;
+  margin-top: 8px;
+}
+
+.preferences-actions {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+
+  gap: 16px;
+
+  padding-top: 20px;
+}
+
+.preferences-save-button {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  gap: 8px;
+
+  min-height: 48px;
+  padding: 0 20px;
+
+  background: var(--color-forge-gradient);
+  color: var(--color-on-primary);
+
+  font-weight: 600;
+
+  border-radius: 9px;
+
+  box-shadow: var(--shadow-md);
+
+  transition:
+    transform 0.15s ease,
+    box-shadow 0.15s ease;
+
+  &:hover {
+    transform: translateY(-2px);
+    box-shadow: var(--shadow-lg);
+  }
+
+  &:active {
+    transform: translateY(0);
+  }
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+.preferences-message {
+  display: flex;
+  align-items: center;
+
+  gap: 6px;
+
+  font-size: 13px;
+  font-weight: 500;
+
+  .material-icons {
+    font-size: 18px;
+  }
+}
+
+.success-message {
+  color: var(--color-success-700);
+}
+
+.error-message {
+  color: var(--color-error-700);
+}
+
+/* ========================================
+   Player Preference Select
+   ======================================== */
+
+.player-select {
+  .mat-mdc-text-field-wrapper {
+    background-color: rgba(196, 119, 34, 0.035);
+    border-radius: 6px;
+  }
+
+  .mat-mdc-select-value {
+    color: var(--color-forge-700);
+    font-weight: 600;
+  }
+
+  .mat-mdc-select-arrow {
+    color: var(--color-forge-accent-900);
+  }
+
+  &.mat-focused {
+    .mat-mdc-text-field-wrapper {
+      background-color: rgba(196, 119, 34, 0.06);
+    }
+
+    .mdc-notched-outline__leading,
+    .mdc-notched-outline__notch,
+    .mdc-notched-outline__trailing {
+      border-color: var(--color-forge-accent-900) !important;
+    }
+
+    .mat-mdc-floating-label {
+      color: var(--color-forge-accent-900) !important;
+    }
+  }
+}
+
+/* ========================================
+   Game Collection
+   ======================================== */
+
+.collection-card {
+  overflow: hidden;
+}
+
+.collection-icon {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+}
+
+.collection-content {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 24px;
+  padding-top: 8px;
+}
+
+.collection-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 14px;
+  min-width: 0;
+
+  >.material-icons {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-forge-accent-900);
+    font-size: 26px;
+  }
+
+  h3 {
+    margin: 0 0 4px;
+    color: var(--color-text-strong);
+    font-size: 16px;
+    font-weight: 600;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.collection-button {
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  background: var(--gradient-forge);
+  color: var(--color-on-primary);
+
+  .material-icons {
+    font-size: 20px;
+  }
+
+  &:hover {
+    filter: brightness(1.05);
+  }
+}
+
+/* ========================================
+   Mobile
+   ======================================== */
+
+@media (max-width: 600px) {
+  .collection-content {
+    flex-direction: column;
+    align-items: stretch;
+    gap: 18px;
+  }
+
+  .collection-button {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+
+// ========================================
+// Mobile
+// ========================================
+
+@media (max-width: 599px) {
+
+  .preference-row {
+    align-items: flex-start;
+    flex-direction: column;
+
+    gap: 16px;
+  }
+
+  .preference-info {
+    width: 100%;
+  }
+
+  .player-select {
+    width: 100%;
+    margin-left: 56px;
+    width: calc(100% - 56px);
+  }
+
+  .preferences-actions {
+    flex-direction: column;
+    align-items: stretch;
+
+    gap: 12px;
+  }
+
+  .preferences-save-button {
+    width: 100%;
+  }
+
+  .preferences-message {
+    justify-content: center;
+  }
+}
+
+
+// ==============================
+// Password
+// ==============================
+
+.password-section {
+  padding: 24px 0 20px;
+}
+
+.password-section h3,
+.google-account-section h3,
+.danger-section h3 {
+  margin: 0 0 6px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.section-description {
+  margin: 0 0 20px;
+  color: var(--color-text-muted);
+  font-size: 14px;
+}
+
+.full-width {
+  width: 100%;
+  margin-bottom: 8px;
+}
+
+.change-password-button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 8px;
+  margin-left: auto;
+  width: fit-content;
+}
+
+
+// ==============================
+// Messages
+// ==============================
+
+.password-message {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 12px 14px;
+  margin: 8px 0 16px;
+  border-radius: 8px;
+  font-size: 14px;
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+.success-message {
+  color: var(--color-success-700);
+  background-color: var(--color-success-50);
+}
+
+.error-message {
+  color: var(--color-error-700);
+  background-color: var(--color-error-50);
+}
+
+
+// ==============================
+// Google Account
+// ==============================
+
+.google-account-section {
+  padding: 24px 0;
+}
+
+.google-info {
+  display: flex;
+  align-items: flex-start;
+  gap: 16px;
+  padding: 16px;
+  border-radius: 8px;
+  background-color: var(--color-bg-info);
+
+  >.material-icons {
+    flex-shrink: 0;
+    color: var(--color-google);
+    font-size: 32px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+// ==============================
+// Change password button
+// ==============================
+.change-password-button,
+.collection-button,
+.privacy-policy-button {
+  background: var(--color-forge-gradient);
+  color: var(--color-on-primary);
+}
+
+
+
+// ==============================
+// Danger / Delete Account
+// ==============================
+
+.danger-section {
+  padding: 24px 0 8px;
+}
+
+.danger-header {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  margin-bottom: 16px;
+
+  >.material-icons {
+    flex-shrink: 0;
+    margin-top: 2px;
+    color: var(--color-error-600);
+    font-size: 24px;
+  }
+
+  p {
+    margin: 0;
+    color: var(--color-text-muted);
+    font-size: 14px;
+    line-height: 1.5;
+  }
+}
+
+.danger-section button {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+
+  .material-icons {
+    font-size: 20px;
+  }
+}
+
+// ========================================
+// Privacy & Data
+// ========================================
+
+.privacy-card {
+  .info-section {
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
+    padding: 8px 0;
+  }
+
+  .info-section-icon {
+    flex-shrink: 0;
+    width: 42px;
+    height: 42px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    border-radius: 50%;
+    background: var(--color-forge-100);
+    color: var(--color-forge-700);
+
+    .material-icons {
+      font-size: 22px;
+    }
+  }
+
+  .info-section-content {
+    flex: 1;
+
+    h3 {
+      margin: 0 0 6px;
+      color: var(--color-text-strong);
+      font-size: 16px;
+      font-weight: 600;
+    }
+
+    p {
+      margin: 0;
+      color: var(--color-text-muted);
+      line-height: 1.5;
+    }
+  }
+}
+
+// ========================================
+// About United Forge
+// ========================================
+
+.about-content {
+  text-align: center;
+  padding: 8px 0;
+
+  h3 {
+    margin: 0 0 8px;
+    color: var(--color-forge-700);
+    font-size: 20px;
+    font-weight: 600;
+  }
+
+  p {
+    max-width: 500px;
+    margin: 0 auto 18px;
+    color: var(--color-text-muted);
+    line-height: 1.5;
+  }
+}
+
+.version-info {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  color: var(--color-text-faint);
+  font-size: 13px;
+
+  .material-icons {
+    font-size: 17px;
+  }
+}
+
+// ========================================
+// Section Actions
+// ========================================
+
+.section-actions {
+  display: flex;
+  justify-content: flex-end;
+  margin-top: 18px;
+}
+
+.privacy-policy-button {
+  display: inline-flex;
+  align-items: center;
+  gap: 7px;
+
+
+  .material-icons {
+    font-size: 18px;
+  }
+
+  &:hover {
+    background: var(--color-forge-100);
+  }
+}
+
+// ==============================
+// Tablet
+// ==============================
+
+@media (max-width: 899px) {
+  .account-page {
+    grid-template-columns: 1fr;
+    max-width: 700px;
+  }
+}
+
+// ==============================
+// Mobile
+// ==============================
+
+@media (max-width: 599px) {
+  .account-page {
+    padding: 12px 8px 32px;
+    gap: 16px;
+  }
+}

@@ -1,19 +1,98 @@
-<div class="center-content">
+<div class="games-container">
+
+  <!-- ======================================== -->
+  <!-- Page Header -->
+  <!-- ======================================== -->
+
   <div class="account-header">
-    <h4>Manage your games</h4>
-  </div>
-  <div>
-    <mat-tab-group [selectedIndex]="selectedIndex" (touchstart)="onSwipeStart($event)" (touchmove)="onSwipeMove($event)" (touchend)="onSwipeEnd()">
-      <mat-tab label="Marvel United"><app-season1></app-season1></mat-tab>
-      <mat-tab label="Marvel United: X-Men"><app-season2></app-season2></mat-tab>
-      <mat-tab label="Marvel United: Multiverse"><app-season3></app-season3></mat-tab>
-      <mat-tab label="DC Super Heroes United"><app-season1-dc></app-season1-dc></mat-tab>
-    </mat-tab-group>
+
+    <div class="header-icon">
+      <span class="material-icons">inventory_2</span>
+    </div>
+
+    <div class="header-text">
+      <h2>Manage Your Games</h2>
+      <p>Choose which heroes, villains, and locations are available to the randomizer.</p>
+    </div>
+
   </div>
 
-  <div class="save-button-container">
-    <button mat-raised-button (click)="saveSelections()">
-      Save Selections
-    </button>
-  </div>
+
+  <!-- ======================================== -->
+  <!-- Game Selection Card -->
+  <!-- ======================================== -->
+
+  <mat-card class="games-card">
+
+    <mat-tab-group
+      class="game-tabs"
+      [selectedIndex]="selectedIndex"
+      (touchstart)="onSwipeStart($event)"
+      (touchmove)="onSwipeMove($event)"
+      (touchend)="onSwipeEnd()">
+
+      <!-- Marvel United -->
+      <mat-tab label="Marvel United">
+        <div class="tab-content">
+          <app-season1></app-season1>
+        </div>
+      </mat-tab>
+
+      <!-- Marvel United: X-Men -->
+      <mat-tab label="Marvel United: X-Men">
+        <div class="tab-content">
+          <app-season2></app-season2>
+        </div>
+      </mat-tab>
+
+      <!-- Marvel United: Multiverse -->
+      <mat-tab label="Marvel United: Multiverse">
+        <div class="tab-content">
+          <app-season3></app-season3>
+        </div>
+      </mat-tab>
+
+      <!-- DC Super Heroes United -->
+      <mat-tab label="DC Super Heroes United">
+        <div class="tab-content">
+          <app-season1-dc></app-season1-dc>
+        </div>
+      </mat-tab>
+
+    </mat-tab-group>
+
+  </mat-card>
+
+
+<!-- ======================================== -->
+<!-- Save Selections -->
+<!-- ======================================== -->
+
+<div class="save-button-container">
+
+  @if (saveMessage) {
+    <div
+      class="save-message"
+      [class.success-message]="saveSuccess"
+      [class.error-message]="!saveSuccess">
+
+      <span class="material-icons">
+        {{ saveSuccess ? 'check_circle' : 'error' }}
+      </span>
+
+      <span>{{ saveMessage }}</span>
+
+    </div>
+  }
+
+  <button
+    mat-raised-button
+    class="save-button"
+    (click)="saveSelections()">
+
+    <span class="material-icons">save</span>
+    Save Selections
+
+  </button>
+
 </div>

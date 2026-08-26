@@ -1,34 +1,345 @@
-.title {
-  font-weight: 500;
+// ========================================
+// Collection
+// ========================================
+
+.collection-container {
+  padding: 30px 16px;
+  background: radial-gradient(circle at top,
+    var(--color-primary-50) 0%,
+    var(--color-bg-page) 45%);
 }
 
+
+// ========================================
+// Accordion
+// ========================================
+
+.collection-accordion {
+  display: block;
+  width: 100%;
+  max-width: 1000px;
+  margin: 0 auto;
+}
+
+
+// ========================================
+// Game Panels
+// ========================================
+
+.collection-accordion > mat-expansion-panel {
+  margin-bottom: 12px;
+  border-radius: 12px !important;
+  overflow: hidden;
+  box-shadow: 0 3px 10px rgba(0, 0, 0, 0.07);
+  transition: box-shadow 0.2s ease, transform 0.2s ease;
+
+  &:hover {
+    box-shadow: 0 6px 16px rgba(0, 0, 0, 0.1);
+  }
+
+  &:last-child {
+    margin-bottom: 0;
+  }
+}
+
+
+// ========================================
+// Game Titles
+// ========================================
+
+.title {
+  font-size: 17px;
+  font-weight: 600;
+  color: var(--color-forge-700);
+  letter-spacing: 0.1px;
+}
+
+
+// ========================================
+// Game Panel Header
+// ========================================
+
+.collection-accordion > mat-expansion-panel
+  > .mat-expansion-panel-header {
+  min-height: 60px;
+  padding: 0 20px;
+}
+
+.collection-accordion > mat-expansion-panel
+  > .mat-expansion-panel-header:hover {
+  background-color: var(--color-forge-100);
+}
+
+
+// ========================================
+// Category Panels
+// ========================================
+
+.panelHeroes,
+.panelVillains,
+.panelLocations,
+.panelAntiHeroes,
+.panelDualModes,
+.panelPets,
+.panelSupports {
+  margin: 8px 0;
+  border-radius: 8px !important;
+  box-shadow: none !important;
+}
+
+
+// ========================================
+// Warning
+// ========================================
+
 .warning {
-  color: red;
+  color: var(--color-error-600);
   text-align: center;
   display: block;
   margin: 10px auto;
+  font-size: 14px;
 }
 
-.panelHeroes { 
-  background-color: lightblue;
+
+// ========================================
+// Heroes
+// ========================================
+
+.panelHeroes {
+  background: linear-gradient(135deg,
+    var(--color-hero-100),
+    var(--color-hero-50));
+
+  border-left: 4px solid var(--color-hero-700);
+
+  mat-panel-title {
+    color: var(--color-hero-600);
+    font-weight: 500;
+  }
 }
 
-.panelDualModes{
-  background-color: plum;
-}
+
+// ========================================
+// Villains
+// ========================================
 
 .panelVillains {
-  background-color: pink;
+  background: linear-gradient(135deg,
+    var(--color-villain-100),
+    var(--color-error-soft));
+
+  border-left: 4px solid var(--color-villain-700);
+
+  mat-panel-title {
+    color: var(--color-villain-600);
+    font-weight: 500;
+  }
 }
 
-.panelLocations { 
-  background-color: lightgray;
+
+// ========================================
+// Dual-Modes
+// ========================================
+
+.panelDualModes {
+  background: linear-gradient(135deg,
+    var(--color-antihero-100),
+    var(--color-antihero-200));
+
+  border-left: 4px solid var(--color-antihero-700);
+
+  mat-panel-title {
+    color: var(--color-antihero-700);
+    font-weight: 500;
+  }
 }
 
-.panelPets { 
-  background-color: goldenrod;
+
+// ========================================
+// Pets / Sidekicks
+// ========================================
+
+.panelPets {
+  background: linear-gradient(135deg,
+    var(--color-pet-100),
+    var(--color-pet-200));
+
+  border-left: 4px solid var(--color-pet-700);
+
+  mat-panel-title {
+    color: var(--color-pet-700);
+    font-weight: 500;
+  }
 }
+
+
+// ========================================
+// Locations
+// ========================================
+
+.panelLocations {
+  background: linear-gradient(135deg,
+    var(--color-location-100),
+    var(--color-location-200));
+
+  border-left: 4px solid var(--color-location-700);
+
+  mat-panel-title {
+    color: var(--color-location-600);
+    font-weight: 500;
+  }
+}
+
+
+// ========================================
+// Supports
+// ========================================
 
 .panelSupports {
-  background-color: gray;
+  background: linear-gradient(135deg,
+    var(--color-location-card-1),
+    var(--color-location-card-2));
+
+  border-left: 4px solid var(--color-location-600);
+
+  mat-panel-title {
+    color: var(--color-location-600);
+    font-weight: 500;
+  }
+}
+
+
+// ========================================
+// Category Headers
+// ========================================
+
+.panelHeroes mat-expansion-panel-header,
+.panelVillains mat-expansion-panel-header,
+.panelLocations mat-expansion-panel-header,
+.panelAntiHeroes mat-expansion-panel-header,
+.panelDualModes mat-expansion-panel-header,
+.panelPets mat-expansion-panel-header,
+.panelSupports mat-expansion-panel-header {
+  min-height: 48px;
+  padding: 0 16px;
+}
+
+
+// ========================================
+// List Items
+// ========================================
+
+mat-list-item {
+  min-height: 42px;
+  padding: 0 12px;
+  border-radius: 6px;
+  transition: background-color 0.15s ease;
+
+  &:hover {
+    background-color: rgba(255, 255, 255, 0.65);
+  }
+}
+
+
+// ========================================
+// Checkboxes
+// ========================================
+
+mat-checkbox {
+  width: 100%;
+}
+
+
+// ========================================
+// Select All
+// ========================================
+
+mat-list-item:first-of-type {
+  margin-bottom: 4px;
+  border-bottom: 1px solid rgba(0, 0, 0, 0.08);
+
+  mat-checkbox {
+    font-weight: 600;
+  }
+}
+
+
+// ========================================
+// Desktop
+// ========================================
+
+@media (min-width: 900px) {
+  .collection-container {
+    padding: 40px 24px;
+  }
+
+  .collection-accordion > mat-expansion-panel {
+    margin-bottom: 14px;
+  }
+}
+
+
+// ========================================
+// Mobile
+// ========================================
+
+@media (max-width: 599px) {
+  .collection-container {
+    padding: 12px 6px;
+  }
+
+  .collection-accordion > mat-expansion-panel {
+    margin-bottom: 8px;
+    border-radius: 10px !important;
+  }
+
+  .collection-accordion > mat-expansion-panel
+    > .mat-expansion-panel-header {
+    min-height: 56px;
+    padding: 0 16px;
+  }
+
+  .title {
+    font-size: 15px;
+  }
+
+  .panelHeroes,
+  .panelVillains,
+  .panelLocations,
+  .panelAntiHeroes,
+  .panelDualModes,
+  .panelPets,
+  .panelSupports {
+    margin: 6px 0;
+  }
+
+  .panelHeroes mat-expansion-panel-header,
+  .panelVillains mat-expansion-panel-header,
+  .panelLocations mat-expansion-panel-header,
+  .panelAntiHeroes mat-expansion-panel-header,
+  .panelDualModes mat-expansion-panel-header,
+  .panelPets mat-expansion-panel-header,
+  .panelSupports mat-expansion-panel-header {
+    min-height: 46px;
+    padding: 0 12px;
+  }
+
+  mat-list-item {
+    min-height: 40px;
+  }
+}
+
+
+// ========================================
+// Very Small Phones
+// ========================================
+
+@media (max-width: 380px) {
+  .collection-container {
+    padding: 8px 4px;
+  }
+
+  .title {
+    font-size: 14px;
+  }
 }

@@ -71,8 +71,15 @@ export class HomeComponent implements OnInit {
         const uid = user.uid;
         const db = getFirestore();
         const userSelectionsRef = collection(db, 'userSelections');
+        const playerPreferencesRef = collection(db, 'playerPreferences');
         const q = query(
           userSelectionsRef,
+          where('userId', '==', uid),
+          orderBy('timestamp', 'desc'),
+          limit(1)
+        );
+        const p = query(
+          playerPreferencesRef,
           where('userId', '==', uid),
           orderBy('timestamp', 'desc'),
           limit(1)
@@ -87,6 +94,21 @@ export class HomeComponent implements OnInit {
             this.allAntiHeroes = data['antiHeroes'] || [];
             this.allLocations = data['locations'] || [];
             this.allPets = data['pets'] || [];
+          } else {
+          }
+        }).catch((error) => {
+          console.error('Error fetching user selections:', error);
+        });
+
+        getDocs(p).then((querySnapshot) => {
+          if (!querySnapshot.empty) {
+            const doc = querySnapshot.docs[0];
+            const data = doc.data();
+            const playerCount = data['numberOfPlayers'];
+
+            if (typeof playerCount === 'number') {
+              this._playerCount = playerCount;
+            }
           } else {
           }
         }).catch((error) => {

@@ -1,29 +1,361 @@
-<mat-card>
-  <mat-card-title>Change Password</mat-card-title>
-  <mat-card-content>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Current Password</mat-label>
-        <input matInput type="password" [(ngModel)]="currentPassword">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>New Password</mat-label>
-        <input matInput type="password" [(ngModel)]="newPassword">
-      </mat-form-field>
-    </div>
-    <div>
-      <mat-form-field appearance="fill">
-        <mat-label>Confirm Password</mat-label>
-        <input matInput type="password" [(ngModel)]="confirmPassword">
-      </mat-form-field>
-    </div>
-    <div *ngIf="passwordMessage" [ngClass]="{'success-message': passwordSuccess, 'error-message': !passwordSuccess}">
-      {{ passwordMessage }}
-    </div>
-  </mat-card-content>
-  <mat-card-actions>
-    <button mat-raised-button (click)="changePassword()">Change Password</button>
-  </mat-card-actions>
-</mat-card>
+<div class="account-page">
+
+  <!-- ========================================
+       Account Information
+       ======================================== -->
+
+  <div class="account-container">
+    <mat-card class="account-card">
+      <mat-card-header>
+        <div mat-card-avatar class="account-icon">
+          <span class="material-icons">person</span>
+        </div>
+        <mat-card-title>Current User</mat-card-title>
+        <mat-card-subtitle>Account information</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="account-info">
+          <span class="info-label">Email</span>
+          <span class="info-value">{{ userEmail }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="account-info">
+          <span class="info-label">Last Login Date</span>
+          <span class="info-value">{{ lastLoginDate }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="account-info">
+          <span class="info-label">Account Created</span>
+          <span class="info-value">{{ accountCreated }}</span>
+        </div>
+      </mat-card-content>
+      <mat-card-content>
+        <div class="account-info">
+          <span class="info-label">Sign-in Method</span>
+          <span class="info-value">{{ loginMethod }}</span>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- ========================================
+     Security - Email/Password Users
+     ======================================== -->
+
+  <div *ngIf="!isGoogleOnly" class="account-container">
+    <mat-card class="account-card">
+      <mat-card-header>
+        <div mat-card-avatar class="security-icon">
+          <span class="material-icons">lock</span>
+        </div>
+        <mat-card-title>Security</mat-card-title>
+        <mat-card-subtitle>Manage your password and account</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <!-- Change Password -->
+        <div class="password-section">
+          <h3>Change Password</h3>
+          <p class="section-description">
+            Update your password to keep your account secure.
+          </p>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Current Password</mat-label>
+            <input matInput type="password" [(ngModel)]="currentPassword">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>New Password</mat-label>
+            <input matInput type="password" [(ngModel)]="newPassword">
+          </mat-form-field>
+
+          <mat-form-field appearance="outline" class="full-width">
+            <mat-label>Confirm New Password</mat-label>
+            <input matInput type="password" [(ngModel)]="confirmPassword">
+          </mat-form-field>
+
+          <!-- Password Status -->
+          <div *ngIf="passwordMessage" class="password-message" [ngClass]="{
+            'success-message': passwordSuccess,
+            'error-message': !passwordSuccess
+          }">
+
+            <span class="material-icons">
+              {{ passwordSuccess ? 'check_circle' : 'error' }}
+            </span>
+
+            <span>{{ passwordMessage }}</span>
+          </div>
+
+          <button mat-raised-button class="change-password-button" (click)="changePassword()">
+
+            <span class="material-icons">lock_reset</span>
+            Change Password
+          </button>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Delete Account -->
+        <div class="danger-section">
+          <div class="danger-header">
+            <span class="material-icons">warning</span>
+
+            <div>
+              <h3>Delete Account</h3>
+              <p>
+                Permanently delete your account and associated data.
+                This action cannot be undone.
+              </p>
+            </div>
+          </div>
+
+          <button mat-stroked-button color="warn" (click)="deleteAccountWithPassword()">
+
+            <span class="material-icons">delete_forever</span>
+            Delete Account
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- ========================================
+     Security - Google Users
+     ======================================== -->
+
+  <div *ngIf="isGoogleOnly" class="account-container">
+    <mat-card class="account-card">
+      <mat-card-header>
+        <div mat-card-avatar class="security-icon google-security-icon">
+          <span class="material-icons">security</span>
+        </div>
+        <mat-card-title>Security</mat-card-title>
+        <mat-card-subtitle>Manage your account</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+
+        <!-- Google Account Information -->
+        <div class="google-account-section">
+          <div class="google-info">
+            <span class="material-icons">account_circle</span>
+
+            <div>
+              <h3>Google Account</h3>
+              <p>
+                Your account is managed through Google.
+                You don't have a separate password for this application.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <mat-divider></mat-divider>
+
+        <!-- Delete Account -->
+        <div class="danger-section">
+          <div class="danger-header">
+            <span class="material-icons">warning</span>
+
+            <div>
+              <h3>Delete Account</h3>
+              <p>
+                You will be asked to sign in with Google again
+                before your account is permanently deleted.
+              </p>
+            </div>
+          </div>
+
+          <button mat-stroked-button color="warn" (click)="deleteGoogleOnlyAccount()">
+
+            <span class="material-icons">delete_forever</span>
+            Delete Account
+          </button>
+        </div>
+
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- ========================================
+       Forge Preferences
+       ======================================== -->
+
+  <div class="account-container">
+    <mat-card class="account-card preferences-card">
+      <mat-card-header>
+        <div mat-card-avatar class="preferences-icon">
+          <span class="material-icons">tune</span>
+        </div>
+        <mat-card-title>Forge Preferences</mat-card-title>
+        <mat-card-subtitle>
+          Customize your default player settings
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="preference-section">
+
+          <!-- Number of Players -->
+          <div class="preference-row">
+            <div class="preference-info">
+
+              <div>
+                <h3>Number of Players</h3>
+                <p>Set the default number of players selected when creating a game.</p>
+              </div>
+            </div>
+
+            <mat-form-field appearance="outline" class="player-select">
+              <mat-label>Players</mat-label>
+              <mat-select [(ngModel)]="defaultPlayerCount">
+                <mat-option [value]="1">1 Player</mat-option>
+                <mat-option [value]="2">2 Players</mat-option>
+                <mat-option [value]="3">3 Players</mat-option>
+                <mat-option [value]="4">4 Players</mat-option>
+              </mat-select>
+            </mat-form-field>
+          </div>
+
+          <!-- Save Preferences -->
+          <div class="preferences-actions">
+            
+            <button mat-raised-button class="preferences-save-button" (click)="savePreferences()">
+
+              <span class="material-icons">save</span>
+              Save Preferences
+            </button>
+          </div>
+
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- ========================================
+     Game Collection
+     ======================================== -->
+
+  <div class="account-container">
+    <mat-card class="account-card collection-card">
+      <mat-card-header>
+        <div mat-card-avatar class="collection-icon">
+          <span class="material-icons">inventory_2</span>
+        </div>
+
+        <mat-card-title>Game Collection</mat-card-title>
+        <mat-card-subtitle>
+          Manage which heroes, villains, and locations are available to the randomizer.
+        </mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="collection-content">
+          <div class="collection-info">
+            <div>
+              <h3>Customize Your Collection</h3>
+              <p>
+                Choose which games and expansions are included when generating a random game.
+              </p>
+            </div>
+          </div>
+
+          <button mat-raised-button class="collection-button" (click)="navigateTo('/games')">
+            <span class="material-icons">sports_esports</span>
+            Manage Games
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  
+
+  <!-- ========================================
+     Privacy & Data
+     ======================================== -->
+
+  <div class="account-container">
+    <mat-card class="account-card privacy-card">
+      <mat-card-header>
+        <div mat-card-avatar class="privacy-icon">
+          <span class="material-icons">policy</span>
+        </div>
+
+        <mat-card-title>Privacy &amp; Data</mat-card-title>
+        <mat-card-subtitle>Learn how your information is handled</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="info-section">
+
+          <div class="info-section-content">
+            <h3>Privacy Policy</h3>
+            <p>
+              Read our Privacy Policy to learn what information we collect,
+              how it is used, and how your data is protected.
+            </p>
+          </div>
+        </div>
+
+        <div class="section-actions">
+          <button mat-stroked-button class="privacy-policy-button" (click)="navigateTo('/privacy')">
+
+            <span class="material-icons">open_in_new</span>
+            Privacy Policy
+          </button>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <!-- ========================================
+     About United Forge
+     ======================================== -->
+
+  <div class="account-container">
+    <mat-card class="account-card about-card">
+      <mat-card-header>
+        <div mat-card-avatar class="about-icon">
+          <span class="material-icons">local_fire_department</span>
+        </div>
+
+        <mat-card-title>About United Forge</mat-card-title>
+        <mat-card-subtitle>About the app</mat-card-subtitle>
+      </mat-card-header>
+
+      <mat-card-content>
+        <div class="about-content">
+          <h3>United Forge</h3>
+
+          <p>
+            United Forge is a randomizer for
+            Marvel United and DC Super Heroes United.
+          </p>
+
+          <div class="version-info">
+            <span class="material-icons">info</span>
+            <span>Version {{versionNumber}}</span>
+          </div>
+        </div>
+      </mat-card-content>
+    </mat-card>
+  </div>
+
+  <div *ngIf="preferencesMessage" class="preferences-message" [class.success-message]="preferencesSuccess"
+              [class.error-message]="!preferencesSuccess">
+
+              <span class="material-icons">
+                {{ preferencesSuccess ? 'check_circle' : 'error' }}
+              </span>
+
+              {{ preferencesMessage }}
+            </div>
+</div>

@@ -1,22 +1,34 @@
-<div>
-  <h2 class="title-center">United</h2>
-  <div class="top-right-container">
-
-    <div class="top-menu" *ngIf="isLoggedIn">
-      <button mat-button (click)="navigateTo('/home')">
-        <span class="material-icons">home</span>
-      </button>
-      <button mat-button (click)="navigateTo('/games')">
-        <span class="material-icons">sports_esports</span>
-      </button>
-      <button mat-button (click)="navigateTo('/account')">
-        <span class="material-icons">person</span>
-      </button>
-      <button mat-button (click)="logout()">
-        <span class="material-icons">logout</span>
-      </button>
+<header class="app-header">
+  <div class="header-content">
+    <div class="brand">
+      <span class="brand-icon material-icons">local_fire_department</span>
+      <span class="brand-title">United Forge</span>
     </div>
 
+    <nav class="top-menu" *ngIf="isLoggedIn">
+      <button mat-icon-button matTooltip="Home" (click)="navigateTo('/home')">
+        <span class="material-icons">home</span>
+      </button>
+
+      <button mat-icon-button matTooltip="Games" (click)="navigateTo('/games')">
+        <span class="material-icons">sports_esports</span>
+      </button>
+
+      <button mat-icon-button matTooltip="Account" (click)="navigateTo('/account')">
+        <span class="material-icons">person</span>
+      </button>
+
+      <button mat-icon-button matTooltip="Privacy Policy" (click)="navigateTo('/privacy')">
+        <span class="material-icons">policy</span>
+      </button>
+
+      <button mat-icon-button matTooltip="Log Out" (click)="logout()">
+        <span class="material-icons">logout</span>
+      </button>
+    </nav>
   </div>
-  <router-outlet></router-outlet> <!-- Always render router outlet -->
-</div>
+</header>
+
+<main class="app-content">
+  <router-outlet></router-outlet>
+</main>

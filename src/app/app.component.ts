@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { MatIconRegistry } from '@angular/material/icon';
 import { DomSanitizer } from '@angular/platform-browser';
-import { signOut } from '@angular/fire/auth';
+import { deleteUser, getRedirectResult, signOut } from '@angular/fire/auth';
 import { Auth, onAuthStateChanged, User } from '@angular/fire/auth';
 import { inject } from '@angular/core';
 import { RouterOutlet } from '@angular/router';
@@ -11,13 +11,14 @@ import { MatTabsModule } from '@angular/material/tabs';
 import { CommonModule } from '@angular/common';
 import { MatButtonModule } from '@angular/material/button';
 import { MatIconModule } from '@angular/material/icon';
+import { MatTooltipModule } from '@angular/material/tooltip';
 
 @Component({
-    selector: 'app-root',
-    standalone: true,
-    imports: [RouterOutlet, MatCardModule, MatTabsModule, CommonModule, MatButtonModule, MatIconModule],
-    templateUrl: './app.component.html',
-    styleUrl: './app.component.scss'
+  selector: 'app-root',
+  standalone: true,
+  imports: [RouterOutlet, MatCardModule, MatTabsModule, CommonModule, MatButtonModule, MatIconModule, MatTooltipModule],
+  templateUrl: './app.component.html',
+  styleUrl: './app.component.scss'
 })
 export class AppComponent implements OnInit {
   constructor(
