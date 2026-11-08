@@ -33,9 +33,9 @@ export class Season1Component implements OnInit {
     measurementId: environment.firebase.measurementId
   }
 
-  selectedHeroes: Array<{ name: string; game: string, type: string }> = [];
-  selectedVillains: Array<{ name: string; game: string, type: string }> = [];
-  selectedLocations: Array<{ name: string; game: string, type: string }> = [];
+  selectedHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
   isAllSelected(items: Array<{ name: string; game: string, type: string }>, selected: Array<{ name: string; game: string, type: string }>): boolean {
     return items.length > 0 && items.every(item => selected.some(sel => sel.name === item.name));
@@ -63,35 +63,35 @@ export class Season1Component implements OnInit {
     }
   }
 
-  marvelUnitedHeroes: Array<{ name: string; game: string, type: string }> = [];
-  marvelUnitedVillains: Array<{ name: string; game: string, type: string }> = [];
-  marvelUnitedLocations: Array<{ name: string; game: string, type: string }> = [];
+  marvelUnitedHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  marvelUnitedVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  marvelUnitedLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  enterTheSpiderVerseHeroes: Array<{ name: string; game: string, type: string }> = [];
-  enterTheSpiderVerseVillains: Array<{ name: string; game: string, type: string }> = [];
-  enterTheSpiderVerseLocations: Array<{ name: string; game: string, type: string }> = [];
+  enterTheSpiderVerseHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  enterTheSpiderVerseVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  enterTheSpiderVerseLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  guardiansOfTheGalaxyRemixHeroes: Array<{ name: string; game: string, type: string }> = [];
-  guardiansOfTheGalaxyRemixVillains: Array<{ name: string; game: string, type: string }> = [];
-  guardiansOfTheGalaxyRemixLocations: Array<{ name: string; game: string, type: string }> = [];
+  guardiansOfTheGalaxyRemixHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  guardiansOfTheGalaxyRemixVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  guardiansOfTheGalaxyRemixLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  returnOfTheSinisterSixVillains: Array<{ name: string; game: string, type: string }> = [];
+  returnOfTheSinisterSixVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  riseOfTheBlackPantherHeroes: Array<{ name: string; game: string, type: string }> = [];
-  riseOfTheBlackPantherVillains: Array<{ name: string; game: string, type: string }> = [];
-  riseOfTheBlackPantherLocations: Array<{ name: string; game: string, type: string }> = [];
+  riseOfTheBlackPantherHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  riseOfTheBlackPantherVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  riseOfTheBlackPantherLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  talesOfAsgardHeroes: Array<{ name: string; game: string, type: string }> = [];
-  talesOfAsgardVillains: Array<{ name: string; game: string, type: string }> = [];
-  talesOfAsgardLocations: Array<{ name: string; game: string, type: string }> = [];
+  talesOfAsgardHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  talesOfAsgardVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  talesOfAsgardLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  theInfinityGauntletVillains: Array<{ name: string; game: string, type: string }> = [];
-  theInfinityGauntletLocations: Array<{ name: string; game: string, type: string }> = [];
+  theInfinityGauntletVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  theInfinityGauntletLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  unitedPledgeBonusHeroes: Array<{ name: string; game: string, type: string }> = [];
+  unitedPledgeBonusHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  unitedStretchGoalsHeroes: Array<{ name: string; game: string, type: string }> = [];
-  unitedStretchGoalsVillains: Array<{ name: string; game: string, type: string }> = [];
+  unitedStretchGoalsHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  unitedStretchGoalsVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
 
   async ngOnInit(): Promise<void> {
     const app = initializeApp(this.config);
@@ -108,9 +108,9 @@ export class Season1Component implements OnInit {
           const gameData = data.filter((x: any) => x.season === 1 && x.game === game);
       
           return {
-            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero" })),
-            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain" })),
-            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location" }))
+            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero", season: item.season })),
+            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain", season: item.season })),
+            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location", season: item.season }))
           };
         }
 

@@ -108,7 +108,7 @@
       </mat-expansion-panel>
     </mat-expansion-panel>
 
-    <mat-label class="warning">Not all information has been released yet. This will be updated when released</mat-label>
+    <div class="warning">Not all information has been released yet. This will be updated when released</div>
 
     <!-- DC Super Heroes United -->
     <mat-expansion-panel>
@@ -121,8 +121,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(dcSuperHeroesHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of dcSuperHeroesHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -131,8 +147,50 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(dcSuperHeroesVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of dcSuperHeroesVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Locations</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(dcSuperHeroesLocations, selectedLocations)"
+            [disabled]="true"
+            (change)="toggleSelectAll(dcSuperHeroesLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (location of dcSuperHeroesLocations; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              [disabled]="true"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -148,8 +206,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(arkhamAsylumBreakoutHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(arkhamAsylumBreakoutHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of arkhamAsylumBreakoutHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -158,8 +232,50 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(arkhamAsylumBreakoutVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(arkhamAsylumBreakoutVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of arkhamAsylumBreakoutVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Locations</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(arkhamAsylumBreakoutLocations, selectedLocations)"
+            [disabled]="true"
+            (change)="toggleSelectAll(arkhamAsylumBreakoutLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (location of arkhamAsylumBreakoutLocations; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              [disabled]="true"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -175,8 +291,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(gothamCityHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(gothamCityHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of gothamCityHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -185,8 +317,24 @@
           <mat-panel-title>Dual-Modes</mat-panel-title>
         </mat-expansion-panel-header>
 
-        @for (hero of gothamCityDualModes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(gothamCityDualModes, selectedDualModes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(gothamCityDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (dualMode of gothamCityDualModes; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              [disabled]="true"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -195,8 +343,50 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(gothamCityVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(gothamCityVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of gothamCityVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
+        }
+      </mat-expansion-panel>
+
+      <mat-expansion-panel class="panelLocations">
+        <mat-expansion-panel-header>
+          <mat-panel-title>Locations</mat-panel-title>
+        </mat-expansion-panel-header>
+
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(gothamCityLocations, selectedLocations)"
+            [disabled]="true"
+            (change)="toggleSelectAll(gothamCityLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (location of gothamCityLocations; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              [disabled]="true"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -205,8 +395,24 @@
           <mat-panel-title>Supports</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(gothamCitySupports, selectedPets)"
+            [disabled]="true"
+            (change)="toggleSelectAll(gothamCitySupports, selectedPets)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (support of gothamCitySupports; track $index) {
-          <mat-list-item>{{ support.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isPetSelected(support)"
+              [disabled]="true"
+              (change)="toggleSelection(support, selectedPets)">
+              {{ support.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -222,8 +428,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
-        @for (hero of greenLaternCorpsHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(greenLanternCorpsHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(greenLanternCorpsHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (hero of greenLanternCorpsHeroes; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -239,8 +461,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(jsaHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(jsaHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of jsaHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -249,8 +487,24 @@
           <mat-panel-title>Dual-Modes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(jsaDualModes, selectedDualModes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(jsaDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (dualMode of jsaDualModes; track $index) {
-          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              [disabled]="true"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -266,8 +520,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(metropolisHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(metropolisHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of metropolisHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -276,8 +546,24 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(metropolisVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(metropolisVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of metropolisVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -286,8 +572,24 @@
           <mat-panel-title>Locations</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(metropolisLocations, selectedLocations)"
+            [disabled]="true"
+            (change)="toggleSelectAll(metropolisLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (location of metropolisLocations; track $index) {
-          <mat-list-item>{{ location.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              [disabled]="true"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -296,8 +598,24 @@
           <mat-panel-title>Supports</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(metropolisSupports, selectedPets)"
+            [disabled]="true"
+            (change)="toggleSelectAll(metropolisSupports, selectedPets)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (support of metropolisSupports; track $index) {
-          <mat-list-item>{{ support.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isPetSelected(support)"
+              [disabled]="true"
+              (change)="toggleSelection(support, selectedPets)">
+              {{ support.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -313,8 +631,24 @@
           <mat-panel-title>Sidekicks</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(sidekicks, selectedPets)"
+            [disabled]="true"
+            (change)="toggleSelectAll(sidekicks, selectedPets)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (sidekick of sidekicks; track $index) {
-          <mat-list-item>{{ sidekick.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isPetSelected(sidekick)"
+              [disabled]="true"
+              (change)="toggleSelection(sidekick, selectedPets)">
+              {{ sidekick.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -330,8 +664,24 @@
           <mat-panel-title>Dual-Modes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(suicideSquadDualModes, selectedDualModes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(suicideSquadDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (dualMode of suicideSquadDualModes; track $index) {
-          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              [disabled]="true"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -347,8 +697,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(teenTitansHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(teenTitansHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of teenTitansHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -357,8 +723,24 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
-        @for (villains of teenTitansVillains; track $index) {
-          <mat-list-item>{{ villains.name }}</mat-list-item>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(teenTitansVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(teenTitansVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (villain of teenTitansVillains; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -374,8 +756,24 @@
           <mat-panel-title>Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(warOfLightHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(warOfLightHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of warOfLightHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -384,8 +782,24 @@
           <mat-panel-title>Dual Modes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(warOfLightDualModes, selectedDualModes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(warOfLightDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (dualMode of warOfLightDualModes; track $index) {
-          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              [disabled]="true"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -394,8 +808,24 @@
           <mat-panel-title>Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
-        @for (villains of warOfLightVillains; track $index) {
-          <mat-list-item>{{ villains.name }}</mat-list-item>
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(warOfLightVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(warOfLightVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
+        @for (villain of warOfLightVillains; track $index) {
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>
@@ -411,8 +841,24 @@
           <mat-panel-title>Pledge Bonus Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(pledgeBonusHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(pledgeBonusHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of pledgeBonusHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -421,8 +867,24 @@
           <mat-panel-title>Pledge Bonus Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(pledgeBonusVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(pledgeBonusVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of pledgeBonusVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -431,8 +893,24 @@
           <mat-panel-title>Pledge Bonus Supports</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(pledgeBonusSupports, selectedPets)"
+            [disabled]="true"
+            (change)="toggleSelectAll(pledgeBonusSupports, selectedPets)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (support of pledgeBonusSupports; track $index) {
-          <mat-list-item>{{ support.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isPetSelected(support)"
+              [disabled]="true"
+              (change)="toggleSelection(support, selectedPets)">
+              {{ support.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -441,8 +919,24 @@
           <mat-panel-title>Stretch Goals Heroes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(stretchGoalsHeroes, selectedHeroes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(stretchGoalsHeroes, selectedHeroes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (hero of stretchGoalsHeroes; track $index) {
-          <mat-list-item>{{ hero.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isHeroSelected(hero)"
+              [disabled]="true"
+              (change)="toggleSelection(hero, selectedHeroes)">
+              {{ hero.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -451,8 +945,24 @@
           <mat-panel-title>Stretch Goals Dual Modes</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(stretchGoalsDualModes, selectedDualModes)"
+            [disabled]="true"
+            (change)="toggleSelectAll(stretchGoalsDualModes, selectedDualModes)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (dualMode of stretchGoalsDualModes; track $index) {
-          <mat-list-item>{{ dualMode.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isDualModeSelected(dualMode)"
+              [disabled]="true"
+              (change)="toggleSelection(dualMode, selectedDualModes)">
+              {{ dualMode.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -461,8 +971,24 @@
           <mat-panel-title>Stretch Goals Villains</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(stretchGoalsVillains, selectedVillains)"
+            [disabled]="true"
+            (change)="toggleSelectAll(stretchGoalsVillains, selectedVillains)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (villain of stretchGoalsVillains; track $index) {
-          <mat-list-item>{{ villain.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isVillainSelected(villain)"
+              [disabled]="true"
+              (change)="toggleSelection(villain, selectedVillains)">
+              {{ villain.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
 
@@ -471,8 +997,24 @@
           <mat-panel-title>Stretch Goals Locations</mat-panel-title>
         </mat-expansion-panel-header>
 
+        <mat-list-item>
+          <mat-checkbox
+            [checked]="isAllSelected(stretchGoalsLocations, selectedLocations)"
+            [disabled]="true"
+            (change)="toggleSelectAll(stretchGoalsLocations, selectedLocations)">
+            Select All
+          </mat-checkbox>
+        </mat-list-item>
+
         @for (location of stretchGoalsLocations; track $index) {
-          <mat-list-item>{{ location.name }}</mat-list-item>
+          <mat-list-item>
+            <mat-checkbox
+              [checked]="isLocationSelected(location)"
+              [disabled]="true"
+              (change)="toggleSelection(location, selectedLocations)">
+              {{ location.name }}
+            </mat-checkbox>
+          </mat-list-item>
         }
       </mat-expansion-panel>
     </mat-expansion-panel>

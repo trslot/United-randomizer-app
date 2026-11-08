@@ -352,7 +352,25 @@
 // Anti Hero
 // ========================================
 
+// ========================================
+// Anti Hero
+// ========================================
+
 .anti-hero-card {
+  background: linear-gradient(
+    135deg,
+    var(--color-antihero-100),
+    var(--color-antihero-200)
+  );
+
+  border-left: 4px solid var(--color-antihero-700);
+}
+
+// ========================================
+// Dual Mode
+// ========================================
+
+.dualMode-card {
   background: linear-gradient(
     135deg,
     var(--color-antihero-100),
@@ -441,6 +459,85 @@
 .pets-option mat-slide-toggle {
   flex-shrink: 0;
 }
+
+// ========================================
+// Season Filter
+// ========================================
+
+.season-filter {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+
+  padding: 14px 16px;
+
+  border: 1px solid var(--color-border);
+  border-radius: 10px;
+
+  background: var(--color-bg-soft);
+
+  transition:
+    border-color 0.2s ease,
+    background-color 0.2s ease,
+    box-shadow 0.2s ease;
+
+  &:hover {
+    border-color: var(--color-forge-accent-500);
+    background: rgba(196, 119, 34, 0.04);
+    box-shadow: var(--shadow-sm);
+  }
+}
+
+.season-filter-title {
+  display: flex;
+  align-items: center;
+
+  gap: 8px;
+
+  color: var(--color-text-strong);
+
+  font-size: 14px;
+  font-weight: 600;
+
+  .material-icons {
+    font-size: 18px;
+    color: var(--color-forge-accent-500);
+  }
+}
+
+.season-filter-options {
+  display: flex;
+  flex-wrap: wrap;
+
+  gap: 8px;
+}
+
+.season-option {
+  font-size: 13px;
+  font-weight: 500;
+
+  padding: 6px 12px;
+
+  color: var(--color-text-strong);
+
+  border-radius: 8px;
+
+  background: transparent;
+
+  transition:
+    background-color 0.15s ease,
+    color 0.15s ease;
+
+  &:hover {
+    background: rgba(196, 119, 34, 0.08);
+  }
+
+  &.mat-radio-button-checked {
+    background: var(--color-forge-gradient);
+    color: var(--color-on-primary);
+  }
+}
+
 // ========================================
 // Locations
 // ========================================

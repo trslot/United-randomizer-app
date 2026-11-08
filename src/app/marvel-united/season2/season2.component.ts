@@ -127,12 +127,12 @@ export class Season2Component implements OnInit {
         // Helper function to filter and map the data
         function getFilteredNames(data: any[], game: string) {
           const gameData = data.filter((x: any) => x.season === 2 && x.game === game);
-      
+        
           return {
-            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero" })),
-            antiHeroes: gameData.filter((c: any) => c.type === 4).map((item: any) => ({ name: item.name, game, type: "anti-hero"})),
-            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain" })),
-            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location"}))
+            heroes: gameData.filter((c: any) => c.type === 1).map((item: any) => ({ name: item.name, game, type: "hero", season: item.season })),
+            antiHeroes: gameData.filter((c: any) => c.type === 4).map((item: any) => ({ name: item.name, game, type: "anti-hero", season: item.season })),
+            villains: gameData.filter((c: any) => c.type === 2).map((item: any) => ({ name: item.name, game, type: "villain", season: item.season })),
+            locations: gameData.filter((c: any) => c.type === 3).map((item: any) => ({ name: item.name, game, type: "location", season: item.season }))
           };
         }
 

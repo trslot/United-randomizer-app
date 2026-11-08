@@ -39,6 +39,25 @@
         </div>
         }
 
+        @if (showSeasonFilter) {
+        <div class="season-filter">
+          <div class="season-filter-title">
+            <span>Game Seasons</span>
+          </div>
+          <div class="season-filter-options">
+            <mat-radio-button class="season-option" [value]="'all'" [(ngModel)]="seasonFilter" (change)="onSeasonFilterChange('all')">
+              Marvel and DC
+            </mat-radio-button>
+            <mat-radio-button class="season-option" [value]="'marvel'" [(ngModel)]="seasonFilter" (change)="onSeasonFilterChange('marvel')">
+              Marvel Only
+            </mat-radio-button>
+            <mat-radio-button class="season-option" [value]="'dc'" [(ngModel)]="seasonFilter" (change)="onSeasonFilterChange('dc')">
+              DC Only
+            </mat-radio-button>
+          </div>
+        </div>
+        }
+
         <button mat-raised-button class="randomize-button" (click)="randomize()">
           <span class="material-icons">shuffle</span>
           Randomize

@@ -10,6 +10,13 @@ import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
 import { MatCheckboxModule } from '@angular/material/checkbox';
 import { MatSlideToggleModule } from '@angular/material/slide-toggle';
+import { MatRadioModule } from '@angular/material/radio';
+
+export enum SeasonFilter {
+  All = 'all',
+  MarvelOnly = 'marvel',
+  DcOnly = 'dc'
+}
 
 import { initializeApp } from "firebase/app";
 import { getDatabase } from "firebase/database";
@@ -19,7 +26,7 @@ import { getFirestore, collection } from 'firebase/firestore';
 
 @Component({
   selector: 'app-home',
-  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatSlideToggleModule],
+  imports: [FormsModule, CommonModule, RouterModule, MatButtonModule, MatCardModule, MatFormFieldModule, MatInputModule, MatSelectModule, MatCheckboxModule, MatSlideToggleModule, MatRadioModule],
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.scss']
 })
@@ -34,6 +41,7 @@ export class HomeComponent implements OnInit {
     appId: environment.firebase.appId,
     measurementId: environment.firebase.measurementId
   }
+  SeasonFilter = SeasonFilter;
 
   private _playerCount = 1;
   get playerCount(): number {
@@ -49,18 +57,25 @@ export class HomeComponent implements OnInit {
   }
 
   includePets: boolean = false;
+  includeMarvelAndDC: boolean = false;
+  seasonFilter: SeasonFilter = SeasonFilter.All;
+  hasMarvelGames: boolean = false;
+  hasDcGames: boolean = false;
+  get showSeasonFilter(): boolean {
+    return this.hasMarvelGames && this.hasDcGames;
+  }
 
-  allHeroes: Array<{ name: string; game: string, type: string }> = [];
-  allVillains: Array<{ name: string; game: string, type: string }> = [];
-  allAntiHeroes: Array<{ name: string; game: string, type: string }> = [];
-  allLocations: Array<{ name: string; game: string, type: string }> = [];
-  allPets: Array<{ name: string; game: string, type: string }> = [];
+  allHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  allVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
+  allAntiHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  allLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
+  allPets: Array<{ name: string; game: string, type: string, season: number }> = [];
 
-  selectedHeroes: Array<{ name: string; game: string, type: string }> = [];
-  selectedVillain: Array<{ name: string; game: string, type: string }> = [];
-  selectedAntiHeroes: Array<{ name: string; game: string, type: string }> = [];
-  selectedLocations: Array<{ name: string; game: string, type: string }> = [];
-  selectedPets: Array<{ name: string; game: string, type: string }> = [];
+  selectedHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedVillain: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedAntiHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedLocations: Array<{ name: string; game: string, type: string, season: number }> = [];
+  selectedPets: Array<{ name: string; game: string, type: string, season: number }> = [];
 
   ngOnInit(): void {
     const app = initializeApp(this.config);
@@ -94,6 +109,7 @@ export class HomeComponent implements OnInit {
             this.allAntiHeroes = data['antiHeroes'] || [];
             this.allLocations = data['locations'] || [];
             this.allPets = data['pets'] || [];
+            this.updateGameAvailability();
           } else {
           }
         }).catch((error) => {
@@ -120,17 +136,49 @@ export class HomeComponent implements OnInit {
   }
 
   randomize() {
+    // Filter data based on season selection
+    // DC games have season: 4, Marvel games have season: 1, 2, or 3
+    const isMarvelGame = (item: { season: number }) => item.season >= 1 && item.season <= 3;
+    const isDcGame = (item: { season: number }) => item.season === 4;
+
+    let filteredHeroes = this.allHeroes;
+    let filteredVillains = this.allVillains;
+    let filteredAntiHeroes = this.allAntiHeroes;
+    let filteredLocations = this.allLocations;
+    let filteredPets = this.allPets;
+
+    switch (this.seasonFilter) {
+      case SeasonFilter.MarvelOnly:
+        filteredHeroes = this.allHeroes.filter(isMarvelGame);
+        filteredVillains = this.allVillains.filter(isMarvelGame);
+        filteredAntiHeroes = this.allAntiHeroes.filter(isMarvelGame);
+        filteredLocations = this.allLocations.filter(isMarvelGame);
+        filteredPets = this.allPets.filter(isMarvelGame);
+        break;
+      case SeasonFilter.DcOnly:
+        filteredHeroes = this.allHeroes.filter(isDcGame);
+        filteredVillains = this.allVillains.filter(isDcGame);
+        filteredAntiHeroes = this.allAntiHeroes.filter(isDcGame);
+        filteredLocations = this.allLocations.filter(isDcGame);
+        filteredPets = this.allPets.filter(isDcGame);
+        break;
+      case SeasonFilter.All:
+      default:
+        // Use all data
+        break;
+    }
+
     // Number of anti-heroes to include (adjustable)
-    const antiHeroCount = Math.min(this.allAntiHeroes.length, this.playerCount);
-    const selectedAntiHeroes = this.getRandomItems(this.allAntiHeroes, antiHeroCount);
+    const antiHeroCount = Math.min(filteredAntiHeroes.length, this.playerCount);
+    const selectedAntiHeroes = this.getRandomItems(filteredAntiHeroes, antiHeroCount);
 
     // Reset selections
     this.selectedAntiHeroes = selectedAntiHeroes;
     this.selectedHeroes = [];
 
     // Assign anti-heroes randomly as hero or villain
-    const antiHeroesAsHeroes: Array<{ name: string; game: string, type: string }> = [];
-    const antiHeroesAsVillains: Array<{ name: string; game: string, type: string }> = [];
+    const antiHeroesAsHeroes: Array<{ name: string; game: string, type: string, season: number }> = [];
+    const antiHeroesAsVillains: Array<{ name: string; game: string, type: string, season: number }> = [];
 
     selectedAntiHeroes.forEach(ah => {
       if (Math.random() < 0.5) {
@@ -141,25 +189,30 @@ export class HomeComponent implements OnInit {
     });
 
     // Select heroes excluding anti-heroes assigned as villain
-    const heroPool = this.allHeroes.filter(h => !antiHeroesAsVillains.includes(h));
+    const heroPool = filteredHeroes.filter(h => !antiHeroesAsVillains.includes(h));
     const remainingHeroSlots = Math.max(0, this.playerCount - antiHeroesAsHeroes.length);
     this.selectedHeroes = [
       ...antiHeroesAsHeroes,
       ...this.getRandomItems(heroPool, remainingHeroSlots)
-    ];
+    ].map(item => ({
+      name: item.name,
+      game: item.game,
+      type: item.type,
+      season: item.season
+    }));
 
     // Select villain excluding anti-heroes assigned as hero
-    const villainPool = this.allVillains.filter(v => !antiHeroesAsHeroes.includes(v));
+    const villainPool = filteredVillains.filter(v => !antiHeroesAsHeroes.includes(v));
     const combinedVillainPool = villainPool.concat(antiHeroesAsVillains);
     this.selectedVillain = [this.getRandomItems(combinedVillainPool, 1)[0]];
 
     // Locations remain unchanged
-    this.selectedLocations = this.getRandomItems(this.allLocations, 6);
+    this.selectedLocations = this.getRandomItems(filteredLocations, 6);
 
     // Pets
-    if (this.includePets && this.allPets && this.allPets.length > 0) {
-      const petCount = Math.min(this.allPets.length, this.playerCount);
-      this.selectedPets = this.getRandomItems(this.allPets, petCount);
+    if (this.includePets && filteredPets && filteredPets.length > 0) {
+      const petCount = Math.min(filteredPets.length, this.playerCount);
+      this.selectedPets = this.getRandomItems(filteredPets, petCount);
     } else {
       this.selectedPets = [];
     }
@@ -177,5 +230,33 @@ export class HomeComponent implements OnInit {
     this.selectedAntiHeroes = [];
     this.selectedLocations = [];
     this.selectedPets = [];
+  }
+
+  onSeasonFilterChange(filter: string): void {
+    this.seasonFilter = filter as SeasonFilter;
+    this.selectedHeroes = [];
+    this.selectedVillain = [];
+    this.selectedAntiHeroes = [];
+    this.selectedLocations = [];
+    this.selectedPets = [];
+  }
+
+  private updateGameAvailability(): void {
+    const allItems = [
+      ...this.allHeroes,
+      ...this.allVillains,
+      ...this.allAntiHeroes,
+      ...this.allLocations,
+      ...this.allPets
+    ];
+    this.hasMarvelGames = allItems.some(item => item.season >= 1 && item.season <= 3);
+    this.hasDcGames = allItems.some(item => item.season === 4);
+
+    // Auto-set filter if user only has one type
+    if (this.hasMarvelGames && !this.hasDcGames) {
+      this.seasonFilter = SeasonFilter.MarvelOnly;
+    } else if (!this.hasMarvelGames && this.hasDcGames) {
+      this.seasonFilter = SeasonFilter.DcOnly;
+    }
   }
 }
